@@ -33,19 +33,19 @@
                                 <a class="nav-link" href="../../../index.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">INICIO</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./menu.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">MENU</a>
+                                <a class="nav-link" href="./menu.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">MENU</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./sobre.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">SOBRE NOSOTROS</a>
+                                <a class="nav-link" href="./sobre.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">SOBRE NOSOTROS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./contacto.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">CONTACTOS </a>
+                                <a class="nav-link" href="./contacto.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">CONTACTOS </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./reservar.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">RESERVAR</a>
+                                <a class="nav-link" href="./reservar.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">RESERVAR</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./domicilios.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
+                                <a class="nav-link" href="./domicilios.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="./inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">Iniciar Sesión </a>
@@ -57,7 +57,7 @@
     </header>
     <!--Formulario-->
     <div class="container-form">
-        <form  action="../../../controlador/UsuarioController.php" method="POST" class="form">
+        <form  action="../../../Controller/UsuarioController.php" method="POST" class="form">
 
             <h2 class="title">Registrarse</h2>
 
@@ -78,6 +78,33 @@
                 <input type="submit">
 
         </form>
-    </div>   
+    </div>
+    
+    <!--FOOTER -->
+        <!--Pié de página -->
+<footer class="container__footer">
+    <div class="footer">
+            <div class="contacto">
+                <h4 class="siguenos">Contacto</h4>
+                    <p>Bryanbocanegra2004@gmail</p>
+                    <p>Teléfono: 3156426181</p>
+            </div>
+            <div class="logos">
+                <h4 class="siguenos">Síguenos</h4>
+                <a href="#"><i class="fa-brands fa-facebook" style="color: #FFD43B;"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp" style="color: #FFD43B;"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram" style="color: #FFD43B;"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin" style="color: #FFD43B;"></i></a>
+            </div>
+            <div class="otros">
+                <h4 class="siguenos" >Dirección:</h4>
+                <p>Calle prueba N° 15-42 Bogotá D.C</p>
+            </div>
+    
+    </div>
+        <div class="derechos">
+            <p> © Todos los derechos reservados - 2025 - Términos y condiciones</p>
+        </div>
+</footer>
 </body>
 </html>

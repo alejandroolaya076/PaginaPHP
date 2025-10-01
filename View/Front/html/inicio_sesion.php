@@ -34,19 +34,19 @@
                                 <a class="nav-link" href="../../../index.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">INICIO</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./menu.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">MENU</a>
+                                <a class="nav-link" href="./menu.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">MENU</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./sobre.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">SOBRE NOSOTROS</a>
+                                <a class="nav-link" href="./sobre.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">SOBRE NOSOTROS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./contacto.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">CONTACTOS </a>
+                                <a class="nav-link" href="./contacto.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">CONTACTOS </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./reservar.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">RESERVAR</a>
+                                <a class="nav-link" href="./reservar.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">RESERVAR</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./domicilios.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
+                                <a class="nav-link" href="./domicilios.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
                             </li>
                             </ul>
                     </div>
@@ -57,7 +57,7 @@
     
     <main class="container__formu">
         <article class="seccionSede">
-            <form action="../../../controlador/UsuarioController.php" method="POST" class="sede">
+            <form action="../../../Controller/UsuarioController.php" method="POST" class="sede">
                 <div id="tituloReservaAhora">
                     <h2 id="ReservaAhoraLetra">INICIA SESIÓN</h2>
                 </div>
@@ -77,7 +77,7 @@
 
                 <div id="registrarse">
                     <label for="">¿No tienes cuenta aún?</label>
-                    <a href="./registro.html">Regístrarse</a>
+                    <a href="./registro.php">Regístrarse</a>
                 </div>
             </form>
         </article>

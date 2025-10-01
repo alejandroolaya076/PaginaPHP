@@ -1,6 +1,7 @@
 <?php
-require_once "../Config/conexion.php";
-require_once "../modelo/usuario.php";
+// En UsuarioController.php
+require_once __DIR__ . '/../Config/conexion.php';
+require_once __DIR__ . '/../Model/usuario.php';
 
 class UsuarioController {
 
@@ -10,6 +11,10 @@ class UsuarioController {
         $this -> modelUser = new Usuario();
     }
 
+
+    /*-----------------
+        VALIDAR USUARIO
+    -----------------*/
     public function validarUser() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario = $this -> modelUser -> login($_POST['email'], $_POST['contrasena']);
@@ -29,13 +34,15 @@ class UsuarioController {
         }
     }
 
+    /*-------------------
+        REGISTRAR USUARIO
+    -------------------*/
     public function registrar(){
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             try {
                 $db = Database::connection();
                 $usuario = new Usuario();
 
-                // Sanitizar y validar los datos recibidos
                 $nombre = trim($_POST['Nombre']);
                 $apellido = trim($_POST['Apellido']);
                 $documento = ($_POST['Documento']);
@@ -43,7 +50,6 @@ class UsuarioController {
                 $correo = ($_POST['Correo_electronico']);
                 $contrasena = password_hash($_POST['Contrasena'], PASSWORD_BCRYPT);
 
-                // Registrar usuario (por defecto tipo cliente)
                 $usuario->registrar($nombre, $apellido, $documento, $telefono, $correo,$contrasena);
 
                 echo "Usuario registrado con éxito.";
@@ -53,15 +59,38 @@ class UsuarioController {
         }
     }
 
+    /*---------------
+        CERRAR SESIÓN
+    ---------------*/
     public function cerrarSesion() {
         session_start();
         session_destroy();
-        header("Location:../Vista/html/login.php");
+        header("Location:../View/Front/html/inicio_sesion.php");
+        exit();
+    }
+
+    /*-----------------
+        LISTAR USUARIOS
+    -----------------*/
+    public function listarUsuarios() {
+    return $this->modelUser->listar_usuario();
+}
+
+    /*-------------------
+        ELIMINAR USUARIOS
+    -------------------*/
+    public function eliminar() {
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
+        $this->modelUser->eliminar($_POST['id']);
+        header("Location:../View/Front/html/perfil.php");
         exit();
     }
 }
+}
 
-// Ejecutar el controlador
+    /*-------------------
+        EJECUTAR EL CONTROLADOR
+    -------------------*/
 $controller = new UsuarioController();
 
 if (isset($_POST['accion'])) {
@@ -69,6 +98,10 @@ if (isset($_POST['accion'])) {
         $controller->validarUser();
     } elseif ($_POST['accion'] === 'registro') {
         $controller->registrar();
-    }
+    } elseif ($_POST['accion'] === 'eliminar') {
+        $controller->eliminar();
+    }elseif($_POST['accion'] === "logout") {
+        $controller->cerrarSesion();
+}
 }
 ?>
