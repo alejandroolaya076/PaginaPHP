@@ -86,6 +86,25 @@ class UsuarioController {
         exit();
     }
 }
+
+    /*-------------------
+        EDITAR USUARIO
+    -------------------*/
+    public function editar() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
+            $id = $_POST['id'];
+            $nombre = trim($_POST['Nombre']);
+            $apellido = trim($_POST['Apellido']);
+            $documento = $_POST['Documento'];
+            $telefono = $_POST['Telefono'];
+            $correo = $_POST['Correo_electronico'];
+
+            $this->modelUser->editar($id, $nombre, $apellido, $documento, $telefono, $correo);
+
+            header("Location:../View/Front/html/perfil.php");
+            exit();
+        }
+    }
 }
 
     /*-------------------
@@ -102,6 +121,8 @@ if (isset($_POST['accion'])) {
         $controller->eliminar();
     }elseif($_POST['accion'] === "logout") {
         $controller->cerrarSesion();
-}
+    }elseif($_POST['accion'] === "editar") {
+        $controller->editar();
+    }
 }
 ?>

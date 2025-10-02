@@ -3,16 +3,16 @@ require_once __DIR__ . "/../../../Controller/UsuarioController.php";
 $controller = new UsuarioController();
 $usuarios = $controller->listarUsuarios();
 session_start();
-// Evitar que el navegador guarde en caché
-header("Cache-Control: no-cache, must-revalidate");
-header("Pragma: no-cache");
-header("Expires: 0");
+// // Evitar que el navegador guarde en caché
+// header("Cache-Control: no-cache, must-revalidate");
+// header("Pragma: no-cache");
+// header("Expires: 0");
 
-// Verificar si existe la sesión
-if (!isset($_SESSION['Usuario'])) {
-    header("Location: ./inicio_sesion.php");
-    exit();
-}
+// // Verificar si existe la sesión
+// if (!isset($_SESSION['Usuario'])) {
+//     header("Location: ./inicio_sesion.php");
+//     exit();
+// }
 $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
 ?>
 <!DOCTYPE html>
@@ -140,6 +140,11 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
                                                         onclick="return confirm('¿Seguro que deseas eliminar este usuario?');">
                                                     <i class="fa-solid fa-trash"></i> Eliminar
                                                 </button>
+                                                <button type="button" class="btn btn-dark btn-sm" 
+                                                        data-bs-toggle="modal" 
+                                                        data-bs-target="#editarModal<?= $u['Id_usuario']; ?>">
+                                                    <i class="fa-solid fa-pen"></i> Editar
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
@@ -155,9 +160,9 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
             </div>
         </div>
     </section>
-        <!-------
-            Modal
-        -------->
+        <!-------------------------
+            Modal registrar usuario
+        -------------------------->
     <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -189,6 +194,39 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
                 </div>
             </form>
         </div>
+        </div>
+    </div>
+    </div>
+
+        <!-- -------------------
+            Modal Editar Usuario
+        ----------------------->
+    <div class="modal fade" id="editarModal<?= $u['Id_usuario']; ?>" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        
+        <div class="modal-header">
+            <h5 class="modal-title">Editar Usuario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+            <form method="POST" action="../../../Controller/UsuarioController.php">
+            <input type="hidden" name="id" value="<?= $u['Id_usuario']; ?>">
+            <input type="text" name="Nombre" value="<?= htmlspecialchars($u['Nombre']); ?>" class="form-control mb-2" required>
+            <input type="text" name="Apellido" value="<?= htmlspecialchars($u['Apellido']); ?>" class="form-control mb-2" required>
+            <input type="number" name="Documento" value="<?= htmlspecialchars($u['Documento']); ?>" class="form-control mb-2" required>
+            <input type="number" name="Telefono" value="<?= htmlspecialchars($u['Telefono']); ?>" class="form-control mb-2" required>
+            <input type="email" name="Correo_electronico" value="<?= htmlspecialchars($u['Correo_electronico']); ?>" class="form-control mb-2" required>
+
+            <input type="hidden" name="accion" value="editar">
+
+            <div class="text-end">
+                <button type="submit" class="btn btn-dark">Guardar cambios</button>
+            </div>
+            </form>
+        </div>
+
         </div>
     </div>
     </div>

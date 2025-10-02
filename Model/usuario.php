@@ -68,5 +68,24 @@ class Usuario {
     $stmt = $this->db->prepare($sql);
     return $stmt->execute([":id" => $id]);
 }
+
+    /*-------------------
+        EDITAR USUARIO
+    -------------------*/
+    public function editar($id, $nombre, $apellido, $documento, $telefono, $correo) {
+        $sql = "UPDATE usuario 
+                SET Nombre = :nombre, Apellido = :apellido, Documento = :documento, 
+                    Telefono = :telefono, Correo_electronico = :correo
+                WHERE Id_usuario = :id";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            ':id' => $id,
+            ':nombre' => $nombre,
+            ':apellido' => $apellido,
+            ':documento' => $documento,
+            ':telefono' => $telefono,
+            ':correo' => $correo
+        ]);
+}
 }
 ?>
