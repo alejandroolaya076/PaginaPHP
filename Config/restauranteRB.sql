@@ -30,7 +30,7 @@
         Nombre VARCHAR(30),
         Apellido VARCHAR(30),
         Documento INT(10),
-        Telefono INT(10),
+        Telefono VARCHAR(15),
         Correo_electronico VARCHAR(50),
         Contrasena VARCHAR(255),
         Tipo_usuario VARCHAR(15)
@@ -40,8 +40,15 @@
         Id_producto INT(6) AUTO_INCREMENT PRIMARY KEY,
         Nombre_producto VARCHAR(10),
         Precio_producto INT(10),
-        Tipo_producto VARCHAR(10)
+        Tipo_producto VARCHAR(10),
+        Descripcion VARCHAR (80)
     );
+
+    CREATE TABLE Contactos(
+        Id_contacto INT(6)AUTO_INCREMENT PRIMARY KEY,
+        Id_usuario INT(6),
+        Mensaje VARCHAR(255)
+    )
 
     /*------------------tablas intermedias-------------------*/
 
@@ -66,4 +73,11 @@
         /*------------------ PAGOS - ORDEN -------------------*/
     ALTER TABLE Orden ADD CONSTRAINT FK_ID2 FOREIGN KEY (Id_pagos) REFERENCES Pagos (Id_pagos);
 
+  /*------------------ USUARIO - CONTACTOS -------------------*/
+    ALTER TABLE contactos ADD CONSTRAINT FK_ID3 FOREIGN KEY (Id_usuario) REFERENCES Usuario (Id_usuario);
+
+
 SELECT User, Host FROM mysql.user;
+
+
+

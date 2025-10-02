@@ -5,11 +5,13 @@
     text-decoration: none;
     list-style-type: none;
 }
-body{
-    background-image: url('../Assets/img/Restaurante/sobre.png');
+body {
+    background: 
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), /* capa oscura */
+        url('../Assets/img/Restaurante/sobre.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size:cover;
+    background-size: cover;
 }
 /*header*/
 .barraNav{

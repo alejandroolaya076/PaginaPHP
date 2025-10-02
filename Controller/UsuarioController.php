@@ -52,7 +52,7 @@ class UsuarioController {
 
                 $usuario->registrar($nombre, $apellido, $documento, $telefono, $correo,$contrasena);
 
-                echo "Usuario registrado con éxito.";
+                header("Location:../View/Front/html/perfil.php ");
             } catch (PDOException $e) {
                 echo "Error en el registro: " . $e->getMessage();
             }
