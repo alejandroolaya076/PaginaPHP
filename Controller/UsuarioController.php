@@ -1,5 +1,5 @@
 <?php
-// En UsuarioController.php
+
 require_once __DIR__ . '../../Config/conexion.php';
 require_once __DIR__ . '../../Model/usuario.php';
 
@@ -12,31 +12,35 @@ class UsuarioController {
     }
 
 
-    /*-----------------
-        VALIDAR USUARIO
-    -----------------*/
+ 
     public function validarUser() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $usuario = $this -> modelUser -> login($_POST['email'], $_POST['contrasena']);
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $usuario = $this->modelUser->login($_POST['email'], $_POST['contrasena']);
 
-            if ($usuario) {
-                session_start();
-                $_SESSION['Usuario'] = $usuario;
-                header("Location:../View/Front/html/perfil.php");
-                exit();
+        if ($usuario) {
+            session_start();
+            $_SESSION['Usuario'] = $usuario;
+
+       
+            if ($usuario['Tipo_usuario'] === 'administrador') {
+                header("Location:../View/Front/html/perfil.php"); 
             } else {
-                echo "mal gay";
-
+                header("Location:../View/Front/html/menu.php"); 
             }
-        } else {
-            header("Location:../View/Front/html/inicio_sesion.php");
             exit();
-        }
-    }
 
-    /*-------------------
-        REGISTRAR USUARIO
-    -------------------*/
+        } else {
+            echo "usuario no encontrado";
+        }
+
+    } else {
+        header("Location:../View/Front/html/inicio_sesion.php");
+        exit();
+    }
+}
+
+
+   
     public function registrar(){
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             try {
@@ -52,16 +56,13 @@ class UsuarioController {
 
                 $usuario->registrar($nombre, $apellido, $documento, $telefono, $correo,$contrasena);
 
-                header("Location:../View/Front/html/perfil.php ");
+                header("Location:../View/Front/html/inicio_sesion.php ");
             } catch (PDOException $e) {
                 echo "Error en el registro: " . $e->getMessage();
             }
         }
     }
 
-    /*---------------
-        CERRAR SESIÓN
-    ---------------*/
     public function cerrarSesion() {
         session_start();
         session_destroy();
@@ -69,16 +70,12 @@ class UsuarioController {
         exit();
     }
 
-    /*-----------------
-        LISTAR USUARIOS
-    -----------------*/
+   
     public function listarUsuarios() {
     return $this->modelUser->listar_usuario();
 }
 
-    /*-------------------
-        ELIMINAR USUARIOS
-    -------------------*/
+   
     public function eliminar() {
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
         $this->modelUser->eliminar($_POST['id']);
@@ -87,9 +84,7 @@ class UsuarioController {
     }
 }
 
-    /*-------------------
-        EDITAR USUARIO
-    -------------------*/
+   
     public function editar() {
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
             $id = $_POST['id'];
@@ -107,9 +102,6 @@ class UsuarioController {
     }
 }
 
-    /*-------------------
-        EJECUTAR EL CONTROLADOR
-    -------------------*/
 $controller = new UsuarioController();
 
 if (isset($_POST['accion'])) {

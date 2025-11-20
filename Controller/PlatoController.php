@@ -18,7 +18,7 @@ class PlatoController {
 
             switch ($accion) {
 
-                // 📦 Registrar un nuevo plato
+                
                 case 'registroPlato':
                     $nombre = $_POST['Nombre_producto'];
                     $precio = $_POST['Precio'];
@@ -28,25 +28,24 @@ class PlatoController {
                     $imagen = null;
                     if (!empty($_FILES['Imagen']['name'])) {
                         $nombreImg = basename($_FILES['Imagen']['name']);
-                        $rutaFisica = __DIR__ . "/../View/Assets/img/" . $nombreImg;
+                        $rutaFisica = __DIR__ . "/../View/img/img/" . $nombreImg;
                         move_uploaded_file($_FILES['Imagen']['tmp_name'], $rutaFisica);
 
-                        // Ruta que se guarda en la BD (visible desde el panel)
-                        $imagen = "View/Assets/img/" . $nombreImg;
+                       
+                        $imagen = "View/img/img/" . $nombreImg;
                     }
 
                     $this->model->registrarPlato($nombre, $precio, $tipo, $descripcion, $imagen);
                     header("Location: ../View/Front/html/perfil.php");
                     break;
 
-                // 🗑️ Eliminar plato
+              
                 case 'eliminarPlato':
                     $id = $_POST['id'];
                     $this->model->eliminarPlato($id);
                     header("Location: ../View/Front/html/perfil.php");
                     break;
 
-                // ✏️ Editar plato
                 case 'editarPlato':
                     $id = $_POST['id'];
                     $nombre = $_POST['Nombre_producto'];
@@ -55,14 +54,12 @@ class PlatoController {
                     $descripcion = $_POST['Descripcion'];
                     $imagen_actual = $_POST['Imagen_actual'];
 
-                    // Si se sube una nueva imagen
                     if (!empty($_FILES['Imagen']['name'])) {
                         $nombreImg = basename($_FILES['Imagen']['name']);
-                        $rutaFisica = __DIR__ . "/../View/Assets/img/" . $nombreImg;
+                        $rutaFisica = __DIR__ . "/../View/img/img/" . $nombreImg;
                         move_uploaded_file($_FILES['Imagen']['tmp_name'], $rutaFisica);
-                        $imagen = "View/Assets/img/" . $nombreImg;
+                        $imagen = "View/img/img/" . $nombreImg;
                     } else {
-                        // Mantener la imagen actual
                         $imagen = $imagen_actual;
                     }
 
@@ -74,7 +71,6 @@ class PlatoController {
     }
 }
 
-// Ejecutar acciones automáticamente si se accede desde un formulario
 $controller = new PlatoController();
 $controller->manejarAcciones();
 ?>

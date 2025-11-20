@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios - Exclusly</title>
-   <link rel="stylesheet" href="../../Css/registro.css">
+    <link rel="stylesheet" href="../../Css/registro.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -28,11 +28,9 @@
                                 <a class="nav-link" href="./menu.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">MENU</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./sobre.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">SOBRE NOSOTROS</a>
+                                <a class="nav-link" href="./sobre.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);"> NOSOTROS</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./contacto.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">CONTACTOS </a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="./reservar.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">RESERVAR</a>
                             </li>
@@ -49,7 +47,7 @@
             </div>
         </div>
 </header>
-    <!--Formulario-->
+   
     <div class="container-form">
         <form  action="../../../Controller/UsuarioController.php" method="POST" class="form">
 
@@ -74,8 +72,7 @@
         </form>
     </div>
     
-    <!--FOOTER -->
-        <!--Pié de página -->
+        
 <footer style="background-color: #141b3e; color: white; padding: 20px 0;">
     <div class="container text-center p-4 pb-0">
         <section class="mb-4 d-flex justify-content-center">

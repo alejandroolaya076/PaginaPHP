@@ -30,9 +30,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="./sobre.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">SOBRE NOSOTROS</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./contacto.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">CONTACTOS </a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="./reservar.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">RESERVAR</a>
                             </li>
@@ -78,7 +76,6 @@
         </article>
     </main>
 
-<!--Pié de página -->
 <footer style="background-color: #141b3e; color: white; padding: 20px 0;">
     <div class="container text-center p-4 pb-0">
         <section class="mb-4 d-flex justify-content-center">

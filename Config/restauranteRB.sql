@@ -112,29 +112,23 @@ CREATE TABLE `producto` (
   `Imagen` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `producto`
---
+
+
 
 INSERT INTO `producto` (`Id_producto`, `Nombre_producto`, `Precio_producto`, `Tipo_producto`, `Descripcion`, `Imagen`) VALUES
-(1, 'Clasica', 12000, 'Hambur', 'Carne de res, queso cheddar y mayonesa especial.', '../IMG/hamburguesa3.jpeg'),
-(2, 'Mexicana', 30000, 'Hambur', 'Carne con guacamole y jalapeños.', '../IMG/hamburguesa4.jpeg'),
-(3, 'Mexican2', 25000, 'Hambur', 'Carne jugosa con guacamole y jalapeños.', '../IMG/hamburguesa12.jpeg'),
-(4, 'Picante', 10000, 'Plato', 'Salchicha, mostaza y ketchup sobre pan suave.', '../IMG/perroc1.png'),
-(5, 'Quesoso', 15000, 'Plato', 'Nachos triturados con salsa cheddar y extra queso.', '../IMG/perros7c.avif'),
-(6, 'Monstruo', 25000, 'Plato', 'BBQ ahumada, cebolla crujiente y costilla.', '../IMG/perro3c.jpg'),
-(7, 'Miel', 10000, 'Postre', 'Pastel rico en miel con cobertura cremosa.', '../IMG/postres.jpg'),
-(8, 'Vainilla', 12000, 'Postre', 'Helado artesanal con toque de vainilla helada.', '../IMG/postres2.jpg'),
-(9, 'Frutas', 20000, 'Postre', 'Frutas frescas con miel y fresas rojas.', '../IMG/postre3.jpg'),
-(10, 'Limonada', 5000, 'Bebida', 'Ácida y vibrante con fresas frescas.', '../IMG/bebida000.jpg'),
-(11, 'Natural', 10000, 'Bebida', 'Jugo fresco de frutas.', '../IMG/bebida0.jpg'),
-(12, 'Ambar', 15000, 'Bebida', 'Bebida con un toque afrutado.', '../IMG/bebidas03.jpeg');
+(1, 'Clasica', 12000, 'Hambur', 'Carne de res, queso cheddar y mayonesa especial.', '../img/hamburguesa3.jpeg'),
+(2, 'Mexicana', 30000, 'Hambur', 'Carne con guacamole y jalapeños.', '../img/hamburguesa4.jpeg'),
+(3, 'Mexican2', 25000, 'Hambur', 'Carne jugosa con guacamole y jalapeños.', '../img/hamburguesa12.jpeg'),
+(4, 'Picante', 10000, 'Plato', 'Salchicha, mostaza y ketchup sobre pan suave.', '../img/perroc1.png'),
+(5, 'Quesoso', 15000, 'Plato', 'Nachos triturados con salsa cheddar y extra queso.', '../img/perros7c.avif'),
+(6, 'Monstruo', 25000, 'Plato', 'BBQ ahumada, cebolla crujiente y costilla.', '../img/perro3c.jpg'),
+(7, 'Miel', 10000, 'Postre', 'Pastel rico en miel con cobertura cremosa.', '../img/postres.jpg'),
+(8, 'Vainilla', 12000, 'Postre', 'Helado artesanal con toque de vainilla helada.', '../img/postres2.jpg'),
+(9, 'Frutas', 20000, 'Postre', 'Frutas frescas con miel y fresas rojas.', '../img/postre3.jpg'),
+(10, 'Limonada', 5000, 'Bebida', 'Ácida y vibrante con fresas frescas.', '../img/bebida000.jpg'),
+(11, 'Natural', 10000, 'Bebida', 'Jugo fresco de frutas.', '../img/bebida0.jpg'),
+(12, 'Ambar', 15000, 'Bebida', 'Bebida con un toque afrutado.', '../img/bebidas03.jpeg');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario`
---
 
 CREATE TABLE `usuario` (
   `Id_usuario` int(6) NOT NULL,

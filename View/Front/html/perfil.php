@@ -24,28 +24,41 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
 </head>
 <body class="bg-light">
 
-<header>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="barranav">
-        <div class="container-fluid">
-            <img src="../../Assets/img/Logo/logo.png" alt="" style="height: 8vw;max-height: 200px; min-width: 150px; min-height:150px;">
-            <a class="navbar-brand" href="#" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: clamp(1rem, 5vw, 3rem); color: #FFD43B;">FASTIE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html">INICIO</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./menu.php">MENU</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./sobre.php">SOBRE NOSOTROS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contacto.php">CONTACTOS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./reservar.php">RESERVAR</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./domicilios.php">DOMICILIOS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./inicio_sesion.php">LOGIN</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./perfil.php">PERFIL</a></li>
-                </ul>
+<header style="background-color: #141b3e; padding: 20px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <img src="../../img/logo croque.png" alt="Foto Circular" class="rounded-circle img-fluid" style="max-width: 80px; height: auto;">
+                </div>
+                <div class="col-md-9">
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item" >
+                                <a class="nav-link" href="../../../index.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">INICIO</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./menu.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">MENU</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./sobre.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">SOBRE NOSOTROS</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="./reservar.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">RESERVAR</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./domicilios.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">LOGIN</a>
+                            </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
             </div>
         </div>
-    </nav>
 </header>
 
 <section class="container mt-4 d-flex justify-content-between align-items-center alert alert-dark shadow">
@@ -62,7 +75,6 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
 
 <div class="listas">
 
-<!------------------- Tabla de usuarios -------------------->
 <section class="container">
     <div class="card shadow">
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
@@ -110,7 +122,6 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
                                     </td>
                                 </tr>
 
-                                <!-- 🔽 Modal de edición del usuario -->
                                 <div class="modal fade" id="editarModal<?= $u['Id_usuario']; ?>" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -146,7 +157,6 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
     </div>
 </section>
 
-<!------------------- Sección de platos -------------------->
 <section class="container mt-5">
     <div class="card shadow">
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
@@ -192,7 +202,6 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
                                     </td>
                                 </tr>
 
-                                <!-- 🔽 Modal de edición del plato -->
                                 <div class="modal fade" id="editarModalplato<?= $u['Id_producto']; ?>" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -209,7 +218,7 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
                                                     <input type="text" name="Descripcion" value="<?= htmlspecialchars($u['Descripcion']); ?>" class="form-control mb-2" required>
                                                     <input type="hidden" name="Imagen_actual" value="<?= htmlspecialchars($u['Imagen']); ?>">
                                                     <label>Imagen actual:</label><br>
-                                                    <img src="../../../<?= htmlspecialchars($u['Imagen']); ?>" width="80" height="80" style="object-fit: cover; border-radius: 8px;"><br>
+                                                    <img src="../../../img<?= htmlspecialchars($u['Imagen']); ?>" width="80" height="80" style="object-fit: cover; border-radius: 8px;"><br>
                                                     <input type="file" name="Imagen" class="form-control mb-2">
                                                     <input type="hidden" name="accion" value="editarPlato">
                                                     <div class="text-end">
@@ -283,6 +292,119 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
         </div>
     </div>
 </div>
+<!------------------- Sección de reservas -------------------->
+<section class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="fa-solid fa-calendar-days"></i> Lista de reservas</h5>
+            <button type="button" class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#registroModalReserva">
+                <i class="fa-solid fa-plus"></i> Registrar nueva reserva
+            </button>
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Número de personas</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($reservas)): ?>
+                            <?php foreach ($reservas as $r): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($r['Nombre']); ?></td>
+                                    <td><?= htmlspecialchars($r['Email']); ?></td>
+                                    <td><?= htmlspecialchars($r['Telefono']); ?></td>
+                                    <td><?= htmlspecialchars($r['Numero_personas']); ?></td>
+                                    <td><?= htmlspecialchars($r['Fecha_reserva']); ?></td>
+                                    <td><?= htmlspecialchars($r['Hora_reserva']); ?></td>
+                                   
+                                        <form method="POST" action="../../../Controller/ReservaController.php" class="d-inline">
+                                            <input type="hidden" name="id" value="<?= $r['Id_reserva']; ?>">
+                                            <button type="submit" name="accion" value="eliminarReserva" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que deseas eliminar esta reserva?');">
+                                                <i class="fa-solid fa-trash"></i> Eliminar
+                                            </button>
+                                        </form>
+                                       
+                                        <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#editarModalReserva<?= $r['Id_reserva']; ?>">
+                                            <i class="fa-solid fa-pen"></i> Editar
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <div class="modal fade" id="editarModalReserva<?= $r['Id_reserva']; ?>" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Editar Reserva</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST" action="../../../Controller/ReservaController.php">
+                                                    <input type="hidden" name="id" value="<?= $r['Id_reserva']; ?>">
+                                                    <input type="text" name="nombre" value="<?= htmlspecialchars($r['Nombre']); ?>" class="form-control mb-2" required>
+                                                    <input type="email" name="email" value="<?= htmlspecialchars($r['Email']); ?>" class="form-control mb-2" required>
+                                                    <input type="number" name="telefono" value="<?= htmlspecialchars($r['Telefono']); ?>" class="form-control mb-2" required>
+                                                    <input type="number" name="numero_personas" value="<?= htmlspecialchars($r['Numero_personas']); ?>" class="form-control mb-2" required>
+                                                    <input type="date" name="fecha" value="<?= htmlspecialchars($r['Fecha_reserva']); ?>" class="form-control mb-2" required>
+                                                    <input type="time" name="hora" value="<?= htmlspecialchars($r['Hora_reserva']); ?>" class="form-control mb-2" required>
+                                                    <input type="hidden" name="accion" value="editarReserva">
+                                                    <div class="text-end">
+                                                        <button type="submit" class="btn btn-dark">Guardar cambios</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr><td colspan="7" class="text-center text-muted py-3">No hay reservas registradas.</td></tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="modal fade" id="registroModalReserva" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Registrar Nueva Reserva</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="../../../Controller/ReservaController.php">
+                    <input type="text" name="nombre" class="form-control mb-2" placeholder="Nombre" required>
+                    <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
+                    <input type="number" name="telefono" class="form-control mb-2" placeholder="Teléfono" required>
+                    <input type="number" name="numero_personas" class="form-control mb-2" placeholder="Número de personas" required>
+                    <input type="date" name="fecha" class="form-control mb-2" required>
+                    <input type="time" name="hora" class="form-control mb-2" required>
+                    <input type="hidden" name="accion" value="crearReserva">
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-dark">Registrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 </body>
 </html>
