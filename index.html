@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./View/Css/style.css">
-    <link rel="stylesheet" href="./View/Css/bootstrap/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/c439753abb.js" crossorigin="anonymous"></script>
+    <title>Usuarios - Exclusly</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./vista/css/style.css">
 </head>
-<!--Encabezado -->
-<body class="body" >
-<header >
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark"id="barranav" >
-        <div class="container-fluid">
-            <img src="./View/Assets/img/Logo/logo.png" alt="" style="height: 8vw;max-height: 200px; min-width: 150px; min-height:150px;">
-            <a class="navbar-brand" href="#" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  font-size: clamp(1rem, 5vw, 4rem); color: #FFD43B; ">FASTIE</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav">
-                        <li class="nav-item" >
+
+<body style="background-color: rgb(34, 32, 32); color: #c7b61e;">
+
+    <header style="background-color: #141b3e; padding: 20px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <img src="./View/img/logo croque.png" alt="Foto Circular" class="rounded-circle img-fluid" style="max-width: 80px; height: auto;">
+                </div>
+                <div class="col-md-9">
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item" >
                             <a class="nav-link" href="./index.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">INICIO</a>
                         </li>
                         <li class="nav-item">
@@ -40,131 +40,126 @@
                             <a class="nav-link" href="./View/Front/html/domicilios.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./View/Front/html/inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">Iniciar Sesión </a>
+                            <a class="nav-link" href="./View/Front/html/inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">LOGIN </a>
                         </li>
-                        </ul>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-        </div>
-    </nav>
-</header>
-
-    <main>
-        <!--titulo-->
-        <div>
-            <h2 class="tituloIndex">CONOCE NUESTRAS INSTALACIONES</h2>
-        </div>
-        <!--Carrusel -->
-            <div id="demo" class="carousel slide" data-bs-ride="carousel">
-        <!-- Indicators/dots -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-                </div>
-        <!-- The slideshow/carousel -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" style="background: black;">
-                            <img src="./View/Assets/img/Restaurante/1.png" alt=""  style="width: 100vw;height: 100vh;object-fit: cover;">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./View/Assets/img/Restaurante/2.png" alt="" style="width: 100vw;height: 100vh;object-fit: cover;">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./View/Assets/img/Restaurante/3.png" alt="" style="width: 100vw;height: 100vh;object-fit: cover;">
-                        </div>
-                    </div>
-        <!-- Left and right controls/icons -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
             </div>
-    </main>
+        </div>
+    </header>
 
-        <!--Titulo encima de las tarjetas principales /son 3/ -->
-    <div>
-        <h2 class="tituloEmpanadasIndex">PRUEBA NUESTRAS ESPECIALIDADES</h2>
+  
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./View/img/carrusel1.jpg" alt="imagen1" data-bs-interval="2000" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="./View/img/carrusel2.jpg" alt="imagen2" data-bs-interval="2000" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="./View/img/carrusel3.jpg" alt="imagen3" data-bs-interval="2000" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="./View/img/carrusel4.jpg" alt="imagen4" data-bs-interval="2000" class="d-block w-100">
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
     </div>
-        <!--Tarjeta 1 -->
-        <section class="tarjetas">
-        
-            <div class="card">
-                <div class="face front">
-                    <img class="img--card" src="./View/Assets/img/Producto/1.png" alt="">
-                    <h3>ARGENTINAS</h3>
-                </div>
-                    <div class="face back">
-                        <h3>$9000</h3>
-                        <p>
-                        La empanada argentina es un plato tradicional que destaca por su exquisita combinación de sabores y su versatilidad.
-                        </p>
-                        <div class="link">
-                            <a href="./View/Front/html/reservar.php">Compra ahora</a>
-                        </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Platos Más Representativos</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./View/img/hamburguesa3.jpeg" class="card-img-top" alt="Plato 1">
+                    <div class="card-body">
+                        <h5 class="card-title">La Clásica Gourmet</h5>
+                        <p class="card-text">Carne de res, queso cheddar y mayonesa especial.</p>
+                        <p class="card-text"><strong>Precio: $12.000</strong></p>
                     </div>
+                </div>
             </div>
-
-        <!--Tarjeta 2 -->
-        <div class="card">
-            <div class="face front">
-                <img class="img--card" src="./View/Assets/img/Producto/2.png" alt="">
-                <h3>COLOMBIANA</h3>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./View/img/perros7c.avif" class="card-img-top" alt="Plato 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Super Quesoso</h5>
+                        <p class="card-text">nachos triturados, salsa de queso cheddar y extra de queso fundido.</p>
+                        <p class="card-text"><strong>Precio: $15.000</strong></p>
+                    </div>
+                </div>
             </div>
-            <div class="face back">
-                <h3>$2000</h3>
-                <p>
-                    La empanada colombiana es una deliciosa y crujiente masa frita rellena de una mezcla sabrosa y jugosa
-                </p>
-                <div class="link">
-                    <a href="./View/Front/html/reservar.php">Compra ahora</a>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./View/img/bebida0.jpg" class="card-img-top" alt="Plato 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Jugo Natural</h5>
+                        <p class="card-text">Jugo fresco de frutas.</p>
+                        <p class="card-text"><strong>Precio: $10.000</strong></p>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!--Tarjeta 3 -->
-        <div class="card">
-            <div class="face front">
-                <img class="img--card" src="./View/Assets/img/Producto/3.png" alt="">
-                <h3>Mixtas</h3>
-            </div>
-            <div class="face back">
-                <h3>$6000</h3>
-                <p> 
-                    es una deliciosa combinación de sabores que mezcla dos de los rellenos más tradicionales de la cocina colombiana
-                </p>
-                <div class="link">
-                    <a href="./View/Front/html/reservar.php">Compra ahora</a>
-                </div>
-            </div>
-        </div>
-</section>
+    </div>
 </body>
 
-    <!--Pié de página -->
-<footer class="container__footer">
-    <div class="footer">
-            <div class="contacto">
-                <h4 class="siguenos">Contacto</h4>
-                    <p>Bryanbocanegra2004@gmail</p>
-                    <p>Teléfono: 3156426181</p>
-            </div>
-            <div class="logos">
-                <h4 class="siguenos">Síguenos</h4>
-                <a href="#"><i class="fa-brands fa-facebook" style="color: #FFD43B;"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp" style="color: #FFD43B;"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram" style="color: #FFD43B;"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin" style="color: #FFD43B;"></i></a>
-            </div>
-            <div class="otros">
-                <h4 class="siguenos" >Dirección:</h4>
-                <p>Calle prueba N° 15-42 Bogotá D.C</p>
-            </div>
-    
+<footer style="background-color: #141b3e; color: white; padding: 20px 0;">
+    <div class="container text-center p-4 pb-0">
+        <section class="mb-4 d-flex justify-content-center">
+            <a class="btn btn-primary btn-floating m-1" href="https://www.facebook.com/" target="_blank" role="button">
+                <img src="./View/img/facebook.png" alt="Facebook" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://twitter.com/" target="_blank" role="button">
+                <img src="./View/img/gorjeo.png" alt="Twitter" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://www.instagram.com/" target="_blank" role="button">
+                <img src="./View/img/instagram.png" alt="Instagram" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://web.whatsapp.com/" target="_blank" role="button">
+                <img src="./View/img/whatsapp.png" alt="WhatsApp" width="30" height="30">
+            </a>
+        </section>
     </div>
-        <div class="derechos">
-            <p> © Todos los derechos reservados - 2025 - Términos y condiciones</p>
+    
+    <div class="container">
+
+        <hr>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>&copy; 2025 Grupo Neptuno. Todos los derechos reservados. Copyray</p>
+            </div>
         </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-phone-alt"></i> PBX: 3133030</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-envelope"></i> Eltriocapitan@gmail.com</p>
+            </div>
+        </div>
+    </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>

@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../Css/domicilios.css">
-    <link rel="stylesheet" href="../../Css/bootstrap/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/c439753abb.js" crossorigin="anonymous"></script>
+    <title>Usuarios - Exclusly</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styler.css">
 </head>
-<body class="body">
-    <!--Encabezado -->
-    <header >
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark"id="barranav" >
-            <div class="container-fluid">
-                <img src="../../Assets/img/Logo/logo.png" alt="" style="height: 8vw;max-height: 200px; min-width: 150px; min-height:150px;">
-                <a class="navbar-brand" href="#" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  font-size: clamp(1rem, 5vw, 3rem); color: #FFD43B; ">FASTIE</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                        <ul class="navbar-nav">
-                            <li class="nav-item" >
+<body style="background-color: rgb(37, 35, 35); color: white;">
+
+<header style="background-color: #141b3e; padding: 20px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <img src="../../img/logo croque.png" alt="Foto Circular" class="rounded-circle img-fluid" style="max-width: 80px; height: auto;">
+                </div>
+                <div class="col-md-9">
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item" >
                                 <a class="nav-link" href="../../../index.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">INICIO</a>
                             </li>
                             <li class="nav-item">
@@ -40,96 +38,117 @@
                                 <a class="nav-link" href="./domicilios.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">Iniciar Sesión </a>
+                                <a class="nav-link" href="./inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">LOGIN</a>
                             </li>
                             </ul>
-                    </div>
+                        </div>
+                    </nav>
+                </div>
             </div>
-        </nav>
+        </div>
     </header>
-    
-<main>
-    <article class="seccionFormulario">
-        <div class="formulario">
-            <div id="tituloRealizaDomicilio">
-                <h2 id="RealizaDomicilioLetra">REALIZA TU DOMICILIO</h2>
-            </div>
-            <div id="seleccionaProducto">
-                <label  class="letraFormulario" for="">Selecciona el producto</label>
-                <select name="" class="inputSeleccionarProducto">
-                    <option value="">Empanada</option>
-                    <option value="">Postre</option>
-                    <option value="">Bebida</option>
-                </select>
-            </div>
-            <div id="ingresarDireccion">
-                <label class="letraFormulario" for="">Ingresa tu dirección</label>
-                <input class="inputSeleccionarDireccion" type="text" value="" required>
-            </div>
-            
-            
-           
-                         <!-- The Modal -->
-                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" style="background: #FFde59;color: black;border: none;margin:8px 45%;width: 70%;padding: 10px;font-size: 25px;">
-                            Pedir domicilio
-                          </button >
-                          <div class="modal" id="myModal">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                          
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                  <h4 class="modal-title" style="color: black;">Se registró tu pedido</h4>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                          
-                                <!-- Modal body -->
-                                <div class="modal-body" style="color: black;">
-                                  Gracias por tu compra
-                  
-                                </div>
-                          
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="background: #FFD43B;border: 2px solid black;color: black;">Cerrar</button>
-                                </div>
-                          
-                              </div>
-                            </div>
-                          </div>
-               
-            <div id="registrarse">
-                <label for="">¿No tienes cuenta aún?</label>
-                <a href="">Regístrarse</a>
-            </div>
-        </div>
-    </article>
-</main>
 
-<!--Pié de página -->
-<footer class="container__footer">
-    <div class="footer">
-            <div class="contacto">
-                <h4 class="siguenos">Contacto</h4>
-                    <p>Bryanbocanegra2004@gmail</p>
-                    <p>Teléfono: 3156426181</p>
-            </div>
-            <div class="logos">
-                <h4 class="siguenos">Síguenos</h4>
-                <a href="#"><i class="fa-brands fa-facebook" style="color: #FFD43B;"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp" style="color: #FFD43B;"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram" style="color: #FFD43B;"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin" style="color: #FFD43B;"></i></a>
-            </div>
-            <div class="otros">
-                <h4 class="siguenos" >Dirección:</h4>
-                <p>Calle prueba N° 15-42 Bogotá D.C</p>
-            </div>
     
-    </div>
-        <div class="derechos">
-            <p> © Todos los derechos reservados - 2025 - Términos y condiciones</p>
-        </div>
-</footer>
-</body>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="card p-4" style="max-width: 400px; width: 100%; background-color: #e3e4e9; color: rgb(17, 35, 114);">
+            <h2 class="text-center">Entrega de pedidos</h2>
+            <form action="reser_exit.html">
+                <div class="mb-3">
+                    <label for="tipo_servicio" class="form-label" style="color: #000000;">Tipo de Servicio:</label>
+                    <select id="tipo_servicio" name="tipo_servicio" class="form-select" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="domicilio">Domicilio</option>
+                        <option value="recoger">Recoger en Tienda</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label" style="color: #000000;">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tel" class="form-label" style="color: #000000;">Teléfono</label>
+                    <input type="number" id="tel" name="telefono" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label" style="color: #000000;">Dirección de Entrega:</label>
+                    <textarea id="direccion" name="direccion" class="form-control" rows="3" placeholder="Escribe tu dirección" required></textarea>
+                </div>
         
+                <div class="mb-3">
+                    <label for="metodo_pago" class="form-label" style="color: #000000;">Método de Pago:</label>
+                    <select id="metodo_pago" name="metodo_pago" class="form-select" onchange="redirigir()" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="efectivo">Efectivo</option>
+                        <option value="tarjeta">Tarjeta credito/debito</option>
+                        <option value="transferencia">Transferencia</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-success w-100" onclick="redirigir()">Pagar</button>
+
+            </form>
+        </div>
+    </div>
+    <script>
+        function redirigir() {
+            const metodoPago = document.getElementById('metodo_pago').value;
+
+            if (metodoPago === 'tarjeta') {
+                window.location.href = 'pago.html';
+            } else if (metodoPago === 'transferencia') {
+                window.location.href = 'pago2.html';
+            } else if (metodoPago === 'efectivo') {
+                alert('Pedido enviado correctamente. Método de pago: Efectivo.');
+            } else {
+                alert('Por favor, selecciona un método de pago.');
+            }
+        }
+    </script>
+
+
+    
+
+
+<footer style="background-color: #141b3e; color: white; padding: 20px 0;">
+    <div class="container text-center p-4 pb-0">
+        <section class="mb-4 d-flex justify-content-center">
+            <a class="btn btn-primary btn-floating m-1" href="https://www.facebook.com/" target="_blank" role="button">
+                <img src="../../img/facebook.png" alt="Facebook" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://twitter.com/" target="_blank" role="button">
+                <img src="../../img/gorjeo.png" alt="Twitter" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://www.instagram.com/" target="_blank" role="button">
+                <img src="../../img/instagram.png" alt="Instagram" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://web.whatsapp.com/" target="_blank" role="button">
+                <img src="../../img/whatsapp.png" alt="WhatsApp" width="30" height="30">
+            </a>
+        </section>
+    </div>
+    
+    <div class="container">
+
+        <hr>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>&copy; 2025 Grupo Neptuno. Todos los derechos reservados. Copyray</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-phone-alt"></i> PBX: 3133030</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-envelope"></i> Eltriocapitan@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>

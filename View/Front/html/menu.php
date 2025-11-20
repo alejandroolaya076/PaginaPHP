@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../Css/menu.css">
-    <link rel="stylesheet" href="../../Css/bootstrap/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/c439753abb.js" crossorigin="anonymous"></script>
+    <title>Usuarios - Exclusly</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body class="body">
-    <header >
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark"id="barranav" >
-            <div class="container-fluid">
-                <img src="../../Assets/img/Logo/logo.png" alt="" style="height: 8vw;max-height: 200px; min-width: 150px; min-height:150px;">
-                <a class="navbar-brand" href="#" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  font-size: clamp(1rem, 5vw, 3rem); color: #FFD43B; ">FASTIE</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                        <ul class="navbar-nav">
-                            <li class="nav-item" >
+<body style="background-color: rgb(34, 32, 32); color: #c7b61e;">
+
+<header style="background-color: #141b3e; padding: 20px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <img src="../../img/logo croque.png" alt="Foto Circular" class="rounded-circle img-fluid" style="max-width: 80px; height: auto;">
+                </div>
+                <div class="col-md-9">
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item" >
                                 <a class="nav-link" href="../../../index.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">INICIO</a>
                             </li>
                             <li class="nav-item">
@@ -40,459 +40,319 @@
                                 <a class="nav-link" href="./domicilios.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">Iniciar Sesión </a>
+                                <a class="nav-link" href="./inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">LOGIN</a>
                             </li>
                             </ul>
-                    </div>
+                        </div>
+                    </nav>
+                </div>
             </div>
-        </nav>
+        </div>
     </header>
-    
-    <script>
-        let carrito = [];
-        let total = 0;
-    
-        function agregarAlCarrito(nombre, descripcion, precio) {
-            carrito.push({ nombre, descripcion, precio });
-            total += precio;
-            actualizarCarrito();
-        }
-    
-        function actualizarCarrito() {
-            const listaCompras = document.getElementById('lista-compras');
-            listaCompras.innerHTML = '';
-            carrito.forEach(item => {
-                let li = document.createElement('li');
-                li.textContent = `${item.nombre} - ${item.descripcion} - $${item.precio}`;
-                listaCompras.appendChild(li);
-            });
-            document.getElementById('total').innerText = total;
-            actualizarContadorCarrito();
-        }
-    
-        function actualizarContadorCarrito() {
-            const contador = document.getElementById('contador-carrito');
-            contador.innerText = carrito.length;
-            contador.style.display = carrito.length > 0 ? 'inline-block' : 'none';
-        }
-    
-        function mostrarCarrito() {
-            document.getElementById('modal').style.display = 'block';
-        }
-    
-        function cerrarModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-    
-        function agregarAlCarritoDesdeHTML(boton) {
-            const card = boton.closest('.card'); // Encuentra la tarjeta del producto
-            const nombre = card.querySelector('h3').textContent;
-            const descripcion = card.querySelector('p').textContent;
-            const precio = parseFloat(card.querySelector('h3#precio').textContent.replace(/[^0-9.]/g, ''));
-    
-            agregarAlCarrito(nombre, descripcion, precio);
-        }
-        function reiniciarCarrito() {
-    carrito = []; // Vaciar el array
-    total = 0; // Reiniciar el total
-    actualizarCarrito(); // Refrescar la vista
-}
-    </script>
 
-
-            <!--Título del Menú -->
-            <div class="menu">
-                <h2 class="menuT">MENÚ</h2>
-            </div>
-            <!--boton modal carrito-->
-            <button id="ver-carrito" onclick="mostrarCarrito()">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="contador-carrito">0</span>
-            </button>
-            
-            <!--modal-->
-            <div id="modal" class="modal" >
-                <div class="modal-contenido" style="border: 1px solid #FFD43B; box-shadow: 0 0 10px #000;">
-                    <span class="cerrar" onclick="cerrarModal()" style="color: black;">&times;</span>
-                    
-                    <h2 class="title__car">Carrito de Compras</h2>
-                    <ul id="lista-compras"></ul>
-                    <p class="total__car"><strong>Total: $<span id="total">0</span></strong></p>
-                    <button onclick="reiniciarCarrito()" class="vaciar__car">Vaciar Carrito</button>
-                </div>
-            </div>
-
-        <!--Sección de las tarjetas con las empanadas -->
-<section class="seccionTarjetas">
-        <!--Tarjeta 1 -->
-<div class="tarjetasM">
-    <div class="tarjetas--container">
-        <div class="card"id="contenedor" >
-            <div class="face front">
-                <img src="../../Assets/img/Producto/4.png" alt="">
-                <h3 id="nombre">Colombianas</h3>
-            </div>
-            <div class="face back">
-                <h3 id="precio">Precio: $2.000</h3>
-                <p id="descripcion">
-                      descripcion: La empanada colombiana es una deliciosa y crujiente masa frita rellena de una mezcla sabrosa y jugosa
-                </p>
-                <div class="link">
-                    <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                </div>
-            </div>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">🍔 Domicilios Croque</a>
+            <button class="cart-button" data-bs-toggle="offcanvas" data-bs-target="#carrito">🛒 Carrito <span id="cartButton" class="badge bg-danger">0</span></button>
         </div>
-        <!--Tarjeta 2 -->
-        <div class="card">
-            <div class="face front">
-                <img src="../../Assets/img/Producto/10.png" alt="">
-                <h3 id="h3">Argentinas</h3>
-            </div>
-            <div class="face back">
-                <h3 id="precio">9.000</h3>
-                <p id="descripcion">
-                    La empanada argentina es un plato tradicional que destaca por su exquisita combinación de sabores y su versatilidad.
-                </p>
-                <div class="link">
-                    <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                </div>
-            </div>
-        </div>
+    </nav>
 
-        <!--Tarjeta 3 -->
-        <div class="card">
-            <div class="face front">
-                <img src="../../Assets/img/Producto/5.png" alt="">
-                <h3 id="nombre">Mixtas</h3>
-            </div>
-            <div class="face back">
-                <h3 id="precio">$6.000</h3>
-                <p id="descripcion">
-                    es una deliciosa combinación de sabores que mezcla dos de los rellenos más tradicionales de la cocina colombiana
-                </p>
-                <div class="link">
-                    <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="tarjetas--container">
-        <!--Tarjeta 4 -->
-        <div class="card">
-            <div class="face front">
-                <img src="../../Assets/img/Producto/6.png" alt="">
-                <h3 id="nombre">Chilenas</h3>
-            </div>
-            <div class="face back">
-                <h3 id="precio">$2.999</h3>
-                <p id="descripcion">
-                    La empanada chilena es una masa rellena, tradicionalmente de pino, una mezcla de carne de res picada, cebolla, huevo duro, aceitunas y pasas
-                </p>
-                <div class="link">
-                    <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                </div>
-            </div>
-        </div>
-
-        <!--Tarjeta 5 -->
-        <div class="card">
-            <div class="face front">
-                <img src="../../Assets/img/Producto/7.png" alt="">
-                <h3 id="nombre">Ecuatorianas</h3>
-            </div>
-            <div class="face back">
-                <h3 id="precio">$12.000</h3>
-                <p id="descripcion">
-                    La empanada ecuatoriana es una masa rellena que puede prepararse con diversos ingredientes, como carne, pollo, queso o mariscos
-
-                </p>
-                <div class="link">
-                    <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                </div>
-            </div>
-        </div>
-
-        <!--Tarjeta 6 -->
-        <div class="card">
-            <div class="face front">
-                <img src="../../Assets/img/Producto/8.png" alt="">
-                <h3 id="nombre">Guatemaltecas</h3>
-            </div>
-            <div class="face back">
-                <h3 id="precio">$1.000</h3>
-                <p id="descripcion">
-                    La empanada guatemalteca es una delicia tradicional que puede ser tanto dulce como salada
-                </p>
-                <div class="link">
-                    <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-                <!--Título de las bebidas -->
-                <div class="menub">
-                    <h2 class="title-bebidas">BEBIDAS</h2>
-                </div>
-
-<!--Sección de las bebidas del menú-->
-        <section class="seccionTarjetas">
-            <!--Tarjeta 1 -->
-            
-    <div class="tarjetasM">
-        <div class="tarjetas--container">
-            <div class="card">
-                <div class="face front">
-                    <img src="../../Assets/img/bebidas/1.png" alt="">
-                    <h3 id="nombre">Naranja</h3>
-                </div>
-                <div class="face back">
-                    <h3 id="precio">$200</h3>
-                    <p id="descripcion">
-                        La bebida de naranja es una refrescante preparación hecha a base de jugo de naranja, que puede ser natural o procesado
-                    </p>
-                    <div class="link">
-                        <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
+        <div class="container py-5">
+            <h1 class="text-center mb-4">Menú de Platos</h1>
     
-            <!--Tarjeta 2 -->
-            <div class="card">
-                <div class="face front">
-                    <img src="../../Assets/img/bebidas/2.png" alt="">
-                    <h3 id="nombre">Manzana Verde</h3>
-                </div>
-                <div class="face back">
-                    <h3 id="precio">$300</h3>
-                    <p id="descripcion">
-                        La bebida de manzana verde es una refrescante y ligeramente ácida preparación hecha a base de jugo de manzana verde. Su sabor es agridulce y vibrante, 
-                    </p>
-                    <div class="link">
-                        <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                    </div>
+            <div class="text-center mb-4">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="menuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Elegir sección
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                        <li><a class="dropdown-item" href="#entradas">Entradas</a></li>
+                        <li><a class="dropdown-item" href="#platos-principales">Platos Fuertes</a></li>
+                        <li><a class="dropdown-item" href="#postres">Postres</a></li>
+                        <li><a class="dropdown-item" href="#bebidas">Bebidas</a></li>
+                    </ul>
                 </div>
             </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-            <!--Tarjeta 3 -->
-            <div class="card">
-                <div class="face front">
-                    <img src="../../Assets/img/bebidas/3.png" alt="">
-                    <h3 id="nombre">Frutos Rojos</h3>
-                </div>
-                <div class="face back">
-                    <h3 id="precio">$150</h3>
-                    <p id="descripcion">
-                        La bebida de frutos rojos es una refrescante y vibrante mezcla hecha a base de frutas como fresas, frambuesas, moras y arándanos.
-                    </p>
-                    <div class="link">
-                        <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    
-    
-            <!--Tarjeta 4 -->
-            <div class="tarjetas--container">
-            <div class="card">
-                <div class="face front">
-                    <img src="../../Assets/img/bebidas/4.png" alt="">
-                    <h3 id="nombre">Coco</h3>
-                </div>
-                <div class="face back">
-                    <h3 id="precio">$999</h3>
-                    <p id="descripcion">
-                        La bebida de coco es una refrescante y cremosa preparación hecha a base de agua o leche de coco. Su sabor es suave, dulce y tropical, 
-                    </p>
-                    <div class="link">
-                        <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-    
-            <!--Tarjeta 5 -->
-            <div class="card">
-                <div class="face front">
-                    <img src="../../Assets/img/bebidas/5.png" alt="">
-                    <h3 id="nombre">Fresa</h3>
-                </div>
-                <div class="face back">
-                    <h3 id="precio">$320</h3>
-                    <p id="descripcion"></p>
-                        La bebida de fresa es una refrescante y dulce preparación elaborada con fresas frescas o procesadas. Su sabor es frutal y ligeramente ácido,
-                    </p>
-                    <div class="link">
-                        <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                    </div>
-                </div>
-            </div>
-    
-            <!--Tarjeta 6 -->
-            <div class="card">
-                <div class="face front">
-                    <img src="../../Assets/img/bebidas/6.png" alt="">
-                    <h3 id="nombre">Maracuya</h3>
-                </div>
-                <div class="face back">
-                    <h3 id="precio">$190</h3>
-                    <p id="descripcion">
-                        La bebida de maracuyá es una refrescante y aromática preparación elaborada con el jugo de esta fruta tropical. Su sabor es intensamente ácido y dulce a la vez
-                        <div class="link">
-                            <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    </section>
-                    <!--Título de postres -->
-                    <div class="menub">
-                        <h2 class="title-bebidas">POSTRES</h2>
-                    </div>
-    
-    <!--Sección de las postres del menú-->
-            <section class="seccionTarjetas">
-                <!--Tarjeta 1 -->
-        <div class="tarjetasM">
-            <div class="tarjetas--container">
-                <div class="card">
-                    <div class="face front">
-                        <img src="../../Assets/img/postres/1.png" alt="">
-                        <h3 id="nombre">Chocolate</h3>
-                    </div>
-                    <div class="face back">
-                        <h3 id="precio">$2.500</h3>
-                        <p id="descripcion">
-                            Un delicioso postre de chocolate, con una textura suave y cremosa, ideal para los amantes del cacao
-                        </p>
-                        <div class="link">
-                            <button class="button__car"  onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                        </div>
-                    </div>
-                </div>
-        
-                <!--Tarjeta 2 -->
-                <div class="card">
-                    <div class="face front">
-                        <img src="../../Assets/img/postres/2.png" alt="">
-                        <h3 id="nombre">Tres Leches</h3>
-                    </div>
-                    <div class="face back">
-                        <h3 id="precio">$3.000</h3>
-                        <p id="descripcion">
-                            El pastel de tres leches es un postre clásico y delicioso, famoso por su esponjosa textura y su increíble dulzura. 
-                        </p>
-                        <div class="link">
-                            <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                        </div>
-                    </div>
-                </div>
-        
-                <!--Tarjeta 3 -->
-                <div class="card">
-                    <div class="face front">
-                        <img src="../../Assets/img/postres/3.png" alt="">
-                        <h3 id="nombre">Mora</h3>
-                    </div>
-                    <div class="face back">
-                        <h3 id="precio">$2.590</h3>
-                        <p id="descripcion">
-                            La mora es una fruta pequeña y jugosa, de color oscuro y sabor agridulce, que pertenece a la familia de las Rosáceas
-                        </p>
-                        <div class="link">
-                            <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        
-        
-                <!--Tarjeta 4 -->
-                <div class="tarjetas--container">
-                <div class="card">
-                    <div class="face front">
-                        <img src="../../Assets/img/postres/4.png" alt="">
-                        <h3 id="nombre">kiwi</h3>
-                    </div>
-                    <div class="face back">
-                        <h3 id="precio">$999</h3>
-                        <p id="descripcion">
-                            El kiwi es una fruta exótica de pulpa verde vibrante y sabor dulce con un toque ácido
-                        </p>
-                        <div class="link">
-                            <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                        </div>
-                    </div>
-                </div>
-        
-                <!--Tarjeta 5 -->
-                <div class="card">
-                    <div class="face front">
-                        <img src="../../Assets/img/postres/5.png" alt="">
-                        <h3 id="nombre">Mango</h3>
-                    </div>
-                    <div class="face back">
-                        <h3 id="precio">$3.620</h3>
-                        <p id="descripcion">
-                            El mango es una fruta tropical jugosa y aromática, con una pulpa suave y dulce que varía en color desde amarillo intenso hasta anaranjado
-                        </p>
-                        <div class="link">
-                            <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
-                        </div>
-                    </div>
-                </div>
-        
-                <!--Tarjeta 6 -->
-                <div class="card">
-                    <div class="face front">
-                        <img src="../../Assets/img/postres/6.png" alt="">
-                        <h3 id="nombre">Helado</h3>
-                    </div>
-                    <div class="face back">
-                        <h3 id="precio">$1.990</h3>
-                        <p id="descripcion">
-                            El helado de chocolate es un postre clásico y cremoso, ideal para los amantes del cacao
-                            <div class="link">
-                                <button class="button__car" onclick="agregarAlCarritoDesdeHTML(this)">Agregar al Carrito</button>
+          
+            <div id="entradas" class="mb-4">
+                <h2 class="text-primary text-center">Entradas</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/hamburguesa3.jpeg" class="card-img-top" alt="Sopa">
+                            <div class="card-body">
+                                <h5 class="card-title">La Clásica Gourmet</h5>
+                                <p class="card-text">Carne de res, queso cheddar y mayonesa especial.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $12.000</strong></p>
+                                                  <button class="btn btn-success" 
+                                            onclick="agregarAlCarrito('La Clásica Gourmet', 'Carne de res, queso cheddar y mayonesa especial.', 12000)"> Agregar al carrito</button>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/hamburguesa4.jpeg" class="card-img-top" alt="Ensalada">
+                            <div class="card-body">
+                                <h5 class="card-title">La Explosión Mexicana</h5>
+                                <p class="card-text">Carne con guacamole y jalapeños.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $30.000</strong></p>
+                                            <button class="btn btn-success" 
+                                            onclick="agregarAlCarrito('La Explosión Mexicana', 'Carne con guacamole, jalapeños y salsa picante.', 30000)">
+                                                Agregar al carrito
+                                            </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/hamburguesa12.jpeg" class="card-img-top" alt="Bruschetta">
+                            <div class="card-body">
+                                <h5 class="card-title">BBQ</h5>
+                                <p class="card-text">Carne jugosa con guacamole y jalapeños.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $25.000</strong></p>
+                                            <button class="btn btn-success" 
+                                            onclick="agregarAlCarrito('BBQ', 'Carne de res, cebolla crispy, tocineta y salsa BBQ.', 25000)">
+                                                Agregar al carrito
+                                            </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     
-        </section>
-</body>
-
-    <!--Pié de página -->
-    <footer class="container__footer">
-        <div class="footer">
-                <div class="contacto">
-                    <h4 class="siguenos">Contacto</h4>
-                        <p>Bryanbocanegra2004@gmail</p>
-                        <p>Teléfono: 3156426181</p>
+          
+            <div id="platos-principales" class="mb-4">
+                <h2 class="text-primary text-center">Platos Fuertes</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/perroc1.png" class="card-img-top" alt="Pasta">
+                            <div class="card-body">
+                                <h5 class="card-title">Picante Explosivo</h5>
+                                <p class="card-text">Salchicha, mostaza y ketchup, sobre un pan suave y delicioso.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $10.000</strong></p>
+                                            <button class="btn btn-success" 
+                                            onclick="agregarAlCarrito('Picante Explosivo', 'Salchicha, mostaza y ketchup, sobre un pan suave y delicioso.', 10000)">
+                                                Agregar al carrito
+                                            </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/perros7c.avif" class="card-img-top" alt="Asado">
+                            <div class="card-body">
+                                <h5 class="card-title">Super Quesoso</h5>
+                                <p class="card-text">nachos triturados, salsa de queso cheddar y extra de queso fundido.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $15.000</strong></p>
+                                            <button class="btn btn-success" 
+                                            onclick="agregarAlCarrito('Super Quesoso', 'Nachos triturados, salsa de queso cheddar y extra de queso fundido.', 15000)">
+                                                Agregar al carrito
+                                            </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/perro3c.jpg" class="card-img-top" alt="Pollo">
+                            <div class="card-body">
+                                <h5 class="card-title">El Monstruo Ahumado</h5>
+                                <p class="card-text">Completo con salsa BBQ ahumada, cebolla crujiente y tiras de costilla desmenuzada.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $25.000</strong></p>
+                                            <button class="btn btn-success" 
+                                            onclick="agregarAlCarrito('El Monstruo Ahumado', 'Salsa BBQ ahumada, cebolla crujiente y costilla desmenuzada.', 25000)">
+                                                Agregar al carrito
+                                            </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="logos">
-                    <h4 class="siguenos">Síguenos</h4>
-                    <a href="#"><i class="fa-brands fa-facebook" style="color: #FFD43B;"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp" style="color: #FFD43B;"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram" style="color: #FFD43B;"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin" style="color: #FFD43B;"></i></a>
-                </div>
-                <div class="otros">
-                    <h4 class="siguenos" >Dirección:</h4>
-                    <p>Calle prueba N° 15-42 Bogotá D.C</p>
-                </div>
-        
-        </div>
-            <div class="derechos">
-                <p> © Todos los derechos reservados - 2025 - Términos y condiciones</p>
             </div>
-    </footer>
+    
+           
+            <div id="postres" class="mb-4">
+                <h2 class="text-primary text-center">Postres</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/postres.jpg" class="card-img-top" alt="Pastel">
+                            <div class="card-body">
+                                <h5 class="card-title">Pastel de miel</h5>
+                                <p class="card-text">Pastel rico en miel con cobertura cremosa.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $10.000</strong></p>
+                                            <button class="btn btn-success" 
+                                            onclick="agregarAlCarrito('Pastel de miel', 'Pastel rico en miel con cobertura cremosa.', 10000)">
+                                                Agregar al carrito
+                                            </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/postres2.jpg" class="card-img-top" alt="Helado">
+                            <div class="card-body">
+                                <h5 class="card-title">Helado de Vainilla</h5>
+                                <p class="card-text">Helado artesanal con toque de vainilla helada.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $12.000</strong></p>
+                                            <button class="btn btn-success" 
+                                            onclick="agregarAlCarrito('Helado de Vainilla', 'Helado artesanal con toque de vainilla.', 12000)">
+                                                Agregar al carrito
+                                            </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/postre3.jpg" class="card-img-top" alt="Frutas">
+                            <div class="card-body">
+                                <h5 class="card-title">Postre de Frutas</h5>
+                                <p class="card-text">Frutas frescas con fresas rojas y un toque de miel.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $20.000</strong></p>
+                                        <button class="btn btn-success" 
+                                        onclick="agregarAlCarrito('Postre de Frutas', 'Frutas frescas con fresas y miel.', 20000)">
+                                            Agregar al carrito
+                                        </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+          
+            <div id="bebidas" class="mb-4">
+                <h2 class="text-primary text-center">Bebidas</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/bebida000.jpg" class="card-img-top" alt="Café">
+                            <div class="card-body">
+                                <h5 class="card-title">Limonada de fresa</h5>
+                                <p class="card-text">Ácida y vibrante con fresas frescas.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $5.000</strong></p>
+                                            <button class="btn btn-success" 
+                                            onclick="agregarAlCarrito('Limonada de fresa', 'Ácida y vibrante con fresas frescas.', 5000)">
+                                                Agregar al carrito
+                                            </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/bebida0.jpg" class="card-img-top" alt="Jugo">
+                            <div class="card-body">
+                                <h5 class="card-title">Jugo Natural</h5>
+                                <p class="card-text">Jugo fresco de frutas.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $10.000</strong></p>
+                                        <button class="btn btn-success" 
+                                        onclick="agregarAlCarrito('Jugo Natural', 'Jugo fresco de frutas.', 10000)">
+                                            Agregar al carrito
+                                        </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="../../img/bebidas03.jpeg" class="card-img-top" alt="Té">
+                            <div class="card-body">
+                                <h5 class="card-title">Ámbar (Amber Ale)</h5>
+                                <p class="card-text">Bebida con un toque afrutado.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted mb-0"><strong>Precio: $15.000</strong></p>
+                                        <button class="btn btn-success" 
+                                        onclick="agregarAlCarrito('Ámbar (Amber Ale)', 'Bebida con un toque afrutado.', 15000)">
+                                            Agregar al carrito
+                                        </button>
+                                </div>
+                            </div>
+                         </div>
+                       </div>
+                    </div>
+                 </div>  
+             </div>
+          </div>
+       </div>
+
+        </script>
+        <script>
+            let totalPrice = 0;
+    
+            function addToCart(price) {
+                totalPrice += price;
+                document.getElementById('cartButton').innerText = Carrito: $${totalPrice};
+            }
+        </script>
+    
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+
+    
+        <footer style="background-color: #141b3e; color: white; padding: 20px 0;">
+    <div class="container text-center p-4 pb-0">
+        <section class="mb-4 d-flex justify-content-center">
+             <a class="btn btn-primary btn-floating m-1" href="https://www.facebook.com/" target="_blank" role="button">
+                <img src="../../img/facebook.png" alt="Facebook" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://twitter.com/" target="_blank" role="button">
+                <img src="../../img/gorjeo.png" alt="Twitter" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://www.instagram.com/" target="_blank" role="button">
+                <img src="../../img/instagram.png" alt="Instagram" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://web.whatsapp.com/" target="_blank" role="button">
+                <img src="../../img/whatsapp.png" alt="WhatsApp" width="30" height="30">
+            </a>
+        </section>
+    </div>
+    
+    <div class="container">
+
+        <hr>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>&copy; 2025 Grupo Neptuno. Todos los derechos reservados. Copyray</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-phone-alt"></i> PBX: 3133030</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-envelope"></i> Eltriocapitan@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>

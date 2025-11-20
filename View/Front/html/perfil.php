@@ -40,7 +40,7 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
                     <li class="nav-item"><a class="nav-link" href="./contacto.php">CONTACTOS</a></li>
                     <li class="nav-item"><a class="nav-link" href="./reservar.php">RESERVAR</a></li>
                     <li class="nav-item"><a class="nav-link" href="./domicilios.php">DOMICILIOS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./inicio_sesion.php">INICIAR SESIÓN</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./inicio_sesion.php">LOGIN</a></li>
                     <li class="nav-item"><a class="nav-link" href="./perfil.php">PERFIL</a></li>
                 </ul>
             </div>

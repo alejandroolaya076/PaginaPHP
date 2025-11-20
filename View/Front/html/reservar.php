@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../Css/reservar.css">
-    <link rel="stylesheet" href="../../Css/bootstrap/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/c439753abb.js" crossorigin="anonymous"></script>
+    <title>Usuarios - Exclusly</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styler.css">
 </head>
-<body class="body">
-    <!--Encabezado -->
-    <header >
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark"id="barranav" >
-            <div class="container-fluid">
-                <img src="../../Assets/img/Logo/logo.png" alt="" style="height: 8vw;max-height: 200px; min-width: 150px; min-height:150px;">
-                <a class="navbar-brand" href="#" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  font-size: clamp(1rem, 5vw, 3rem); color: #FFD43B; ">FASTIE</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                        <ul class="navbar-nav">
-                            <li class="nav-item" >
+<body style="background-color: rgb(37, 35, 35); color: white;">
+
+<header style="background-color: #141b3e; padding: 20px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <img src="../../img/logo croque.png" alt="Foto Circular" class="rounded-circle img-fluid" style="max-width: 80px; height: auto;">
+                </div>
+                <div class="col-md-9">
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item" >
                                 <a class="nav-link" href="../../../index.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">INICIO</a>
                             </li>
                             <li class="nav-item">
@@ -40,103 +38,91 @@
                                 <a class="nav-link" href="./domicilios.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">Iniciar Sesión </a>
+                                <a class="nav-link" href="./inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">LOGIN </a>
                             </li>
                             </ul>
-                    </div>
-            </div>
-        </nav>
-    </header>
-    
-<main class="container__formu">
-    <article class="seccionSede">
-        <div class="sede">
-            <div id="tituloReservaAhora">
-                <h2 id="ReservaAhoraLetra">RESERVA AHORA</h2>
-            </div>
-            <div id="seleccionaMesa">
-                <label  class="letraFormulario" for="">Selecciona la mesa</label>
-                <select name="" class="inputSeleccionarMesa">
-                    <option value="">Mesa especial</option>
-                    <option value="">Mesa casual</option>
-                    <option value="">Mesa ejecutiva</option>
-                </select>
-            </div>
-            
-            <div id="seleccionaSede">
-                <label  class="letraFormulario" for="">Selecciona la sede</label>
-                <select name="" class="inputSeleccionarSede">
-                    <option value="">Sede Bosa</option>
-                    <option value="">Sede Kennedy</option>
-                    <option value="">Sede Chapinero</option>
-                    <option value="">Sede Soacha</option>
-                </select>
-            </div>
-            <div id="seleccionarFecha">
-                <label class="letraFormulario" for="">Selecciona la fecha</label>
-                <input class="inputSeleccionarFecha" type="datetime-local" value="" required>
-            </div>
-             <!-- The Modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" style="background: #FFde59;color: black;border: none;margin:8px 45%;width: 70%;padding: 10px;font-size: 25px;">
-              Reservar
-            </button >
-            <div class="modal" id="myModal">
-              <div class="modal-dialog">
-                <div class="modal-content"> 
-            
-                  <!-- Modal Header -->
-                  <div class="modal-header" style="color: black;">
-                    <h4 class="modal-title">Se registró tu reserva</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                  </div>
-            
-                  <!-- Modal body -->
-                  <div class="modal-body" style="color: black;">
-                    Gracias por tu compra
-    
-                  </div>
-            
-                  <!-- Modal footer -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="background: #FFD43B;border: 2px solid black;color: black;">Cerrar</button>
-                  </div>
-            
+                        </div>
+                    </nav>
                 </div>
-              </div>
-            </div>
- 
-            <div id="registrarse">
-                <label for="">¿No tienes cuenta aún?</label>
-                <a href="">Regístrarse</a>
             </div>
         </div>
-    </article>
-</main>
+    </header>
 
-<!--Pié de página -->
-<footer class="container__footer">
-    <div class="footer">
-            <div class="contacto">
-                <h4 class="siguenos">Contacto</h4>
-                    <p>Bryanbocanegra2004@gmail</p>
-                    <p>Teléfono: 3156426181</p>
-            </div>
-            <div class="logos">
-                <h4 class="siguenos">Síguenos</h4>
-                <a href="#"><i class="fa-brands fa-facebook" style="color: #FFD43B;"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp" style="color: #FFD43B;"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram" style="color: #FFD43B;"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin" style="color: #FFD43B;"></i></a>
-            </div>
-            <div class="otros">
-                <h4 class="siguenos" >Dirección:</h4>
-                <p>Calle prueba N° 15-42 Bogotá D.C</p>
-            </div>
     
-    </div>
-        <div class="derechos">
-            <p> © Todos los derechos reservados - 2025 - Términos y condiciones</p>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="card p-4" style="max-width: 400px; width: 100%; background-color: #141b3e; color: white;">
+            <h2 class="text-center">Formulario de Reserva</h2>
+            <form action="reser_exit.html">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tel" class="form-label">Teléfono</label>
+                    <input type="number" id="tel" name="telefono" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="num" class="form-label">Número de Personas</label>
+                    <input type="number" id="num" name="Numero" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="fecha" class="form-label">Fecha de Reserva</label>
+                    <input type="date" id="fecha" name="fecha" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="hora" class="form-label">Hora de Reserva</label>
+                    <input type="time" id="hora" name="hora" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Enviar Reserva</button>
+            </form>
         </div>
+    </div>
+
+    <footer style="background-color: #141b3e; color: white; padding: 20px 0;">
+    <div class="container text-center p-4 pb-0">
+        <section class="mb-4 d-flex justify-content-center">
+             <a class="btn btn-primary btn-floating m-1" href="https://www.facebook.com/" target="_blank" role="button">
+                <img src="../../img/facebook.png" alt="Facebook" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://twitter.com/" target="_blank" role="button">
+                <img src="../../img/gorjeo.png" alt="Twitter" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://www.instagram.com/" target="_blank" role="button">
+                <img src="../../img/instagram.png" alt="Instagram" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://web.whatsapp.com/" target="_blank" role="button">
+                <img src="../../img/whatsapp.png" alt="WhatsApp" width="30" height="30">
+            </a>
+        </section>
+    </div>
+    
+    <div class="container">
+
+        <hr>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>&copy; 2025 Grupo Neptuno. Todos los derechos reservados. Copyray</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-phone-alt"></i> PBX: 3133030</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-envelope"></i> Eltriocapitan@gmail.com</p>
+            </div>
+        </div>
+    </div>
 </footer>
-</body>
-        
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>

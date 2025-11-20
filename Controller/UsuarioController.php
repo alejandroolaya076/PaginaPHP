@@ -1,7 +1,7 @@
 <?php
 // En UsuarioController.php
-require_once __DIR__ . '/../Config/conexion.php';
-require_once __DIR__ . '/../Model/usuario.php';
+require_once __DIR__ . '../../Config/conexion.php';
+require_once __DIR__ . '../../Model/usuario.php';
 
 class UsuarioController {
 

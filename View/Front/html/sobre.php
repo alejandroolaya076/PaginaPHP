@@ -1,155 +1,144 @@
-z<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../Css/sobre.css">
-    <link rel="stylesheet" href="../../Css/bootstrap/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/c439753abb.js" crossorigin="anonymous"></script>
+    <title>Usuarios - Exclusly</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> 
 </head>
-<!--Encabezado -->
-<header >
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark"id="barranav" >
-        <div class="container-fluid">
-            <img src="../../Assets/img/Logo/logo.png" alt="" style="height: 8vw;max-height: 200px; min-width: 150px; min-height:150px;">
-            <a class="navbar-brand" href="#" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  font-size: clamp(1rem, 5vw, 3rem); color: #FFD43B; ">FASTIE</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav">
-                        <li class="nav-item" >
-                            <a class="nav-link" href="../../../index.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">INICIO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./menu.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">MENU</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./sobre.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">SOBRE NOSOTROS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./contacto.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">CONTACTOS </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./reservar.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">RESERVAR</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./domicilios.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">Iniciar Sesión </a>
-                        </li>
-                        </ul>
+
+<body style="background-color: rgb(34, 32, 32); color: #f0efe8;">
+
+<header style="background-color: #141b3e; padding: 20px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <img src="../../img/logo croque.png" alt="Foto Circular" class="rounded-circle img-fluid" style="max-width: 80px; height: auto;">
                 </div>
+                <div class="col-md-9">
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            <ul class="navbar-nav">
+                                 <li class="nav-item" >
+                                <a class="nav-link" href="../../../index.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">INICIO</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./menu.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">MENU</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./sobre.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">SOBRE NOSOTROS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./contacto.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">CONTACTOS </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./reservar.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">RESERVAR</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./domicilios.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">LOGIN </a>
+                            </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
         </div>
-    </nav>
-</header>
+    </header>
 
-<body>
-    <!--imagen de fondo -->
-        <section class="main-fondo">
-            <div class="cont-fondo">
-                <h1 class="title-sobre">ACERCA DE NOSOTROS</h1 >
-                <p class="eslogan">"Sabores que inspiran, tradición que trasciende."                </p>
-            </div>
-        </section>
-    <!--contenido princpal (inicios)-->
-    <main class="container-sobre">
-        <div class="cont__box">
-        <section class="container-main">
-            <h2 style="font-weight: 900; padding: 10px;">Conocenos</h2>
-                    <div class="cont-text">
-                            <P class="text-sobre" >En el corazón de Bogotá, Richard y Brayan soñaban con crear el mejor restaurante. Con pocos recursos pero mucha pasión, Richard cocinaba sin descanso mientras Brayan gestionaba el negocio. Los primeros meses fueron duros, pero nunca se rindieron.
-                            Decidieron innovar, fusionando la cocina colombiana con técnicas modernas. Poco a poco, su esfuerzo dio frutos y su restaurante se volvió famoso. Un crítico gastronómico los descubrió y, en poco tiempo, las reservas se dispararon.
-                            Años después, su restaurante fue nombrado el mejor de Colombia. Con perseverancia y amistad, convirtieron su sueño en un legado gastronómico.            
-                            </P>                 
-                    </div>
-                    
-        </section>
-        <div class="containt-img">
-                    <img class="img--desc" src="../../Assets/img/Restaurante/empleados.png" >
-                </div>
-            </div>
-    <!--mision-->
-        <section class="container-main-mision">
-            <div class="cont__box__mision">
-                    <div class="cont-subtitle">
-                        <h2 class="subtitle-sobre-mision">Nuestra Misión</h2>
-                    </div>
-                    
-                        <div class="cont-text">
-                                <P class="text-sobre-mision">Elevar la gastronomía colombiana a nivel mundial, ofreciendo experiencias únicas que fusionan tradición e innovación. Inspirar con cada plato, apoyar a pequeños productores y demostrar que con pasión y esfuerzo, los sueños pueden hacerse realidad.
-                                </P>
-                        </div>
-            </div>                       
-        </section>
-        <div class="containt-img">
-                    <img class="img--desc" src="../../Assets/img/Restaurante/empleados2.png" >
-                </div>
-            </div>
-    <!--vision-->
-    <div class="cont__box">
-        <section class="container-main">
-           
-                    <div class="cont-subtitle">
-                        <h2 class="subtitle-sobre">Nuestra visión</h2>
-                    </div>
-                        <div class="cont-subtitle">
-                                <P class="text-sobre">Ser el restaurante insignia de Colombia reconocido a nivel global, expandiendo nuestra propuesta culinaria a diferentes países. Convertirnos en un referente de calidad, creatividad y sostenibilidad, llevando la esencia de nuestra gastronomía a cada rincón del mundo.
-                        </div>
-                        
-           
-                
-                        
-        </section>
 
-    </div>
-    </main>
-                <!--segundo apartado -->
-    <div class="cont__box">
-                    <div class="containt-img">
-                    <img class="img-em" src="../../Assets/img/Restaurante/empleados3.png" alt="">
+    <section class="container mt-5">
+        <h2 class="text-center mb-4">Nuestra Historia</h2>
+        <p>En 1989, en Bogotá, Colombia, Amélie y Jean-Luc fundaron Croque Minute, un restaurante de comidas rápidas francesas. Desde sus inicios, se destacaron por la calidad y autenticidad de sus platillos, como el croque-monsieur y las quiches.</p>
+        <p>La popularidad de Croque Minute creció rápidamente, lo que llevó a la apertura de nuevas sucursales en todo el país. En el año 2000, recibieron el premio "Mejor Comida Rápida Francesa Fuera de Francia", lo que consolidó su reputación a nivel mundial.</p>
+        <p>Hoy, Croque Minute cuenta con más de 50 sucursales en Colombia y está expandiéndose a otros países de América Latina. La historia de Amélie y Jean-Luc es un testimonio del poder de la pasión y la dedicación.</p>
+    </section>
+
+  
+    <section id="sucursales" class="container mt-5">
+        <h2 class="text-center mb-4">Sucursales</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../../img/carrusel1.jpg" class="card-img-top" alt="Sucursal 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Sucursal 1</h5>
+                        <p class="card-text">Dirección: Calle 123 #45-67</p>
+                        <p class="card-text">Ciudad: Bogotá</p>
+                    </div>
                 </div>
-                
-        <section class="section-sobre">
-                    <div class="container-team">
-                        <h2 class="subtitle-subtitle">Conoce nuestro equipo de trabajo</h2>
-                        <div class="flex-containt">
-                            <div>
-                                    <p class="text-sobre-empleado">el equipo trabajaba como un reloj. Santiago, el chef, lideraba la cocina con Sofía, su sous chef, mientras los cocineros y meseros se movían con precisión,
-                                    Una noche, un pedido especial puso a prueba su coordinación. Sin dudarlo, cada uno cumplió su rol con confianza y rapidez. Al final, el cliente quedó encantado. Exhaustos pero felices, se miraron y sonrieron: su éxito no era individual, sino fruto del trabajo en equipo. En ese restaurante, más que compañeros, eran una familia
-                                    <p>
-                            </div>
-                        </div>
-                    </div>
-        </section>
-        
-    </div>
-        <!--Pié de página -->
-        <footer class="container__footer">
-            <div class="footer">
-                    <div class="contacto">
-                        <h4 class="siguenos">Contacto</h4>
-                            <p>Bryanbocanegra2004@gmail</p>
-                            <p>Teléfono: 3156426181</p>
-                    </div>
-                    <div class="logos">
-                        <h4 class="siguenos">Síguenos</h4>
-                        <a href="#"><i class="fa-brands fa-facebook" style="color: #FFD43B;"></i></a>
-                        <a href="#"><i class="fa-brands fa-whatsapp" style="color: #FFD43B;"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram" style="color: #FFD43B;"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin" style="color: #FFD43B;"></i></a>
-                    </div>
-                    <div class="otros">
-                        <h4 class="siguenos" >Dirección:</h4>
-                        <p>Calle prueba N° 15-42 Bogotá D.C</p>
-                    </div>
-            
             </div>
-                <div class="derechos">
-                    <p> © Todos los derechos reservados - 2025 - Términos y condiciones</p>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../../img/carrusel2.jpg" class="card-img-top" alt="Sucursal 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Sucursal 2</h5>
+                        <p class="card-text">Dirección: Carrera 89 #12-34</p>
+                        <p class="card-text">Ciudad: Medellín</p>
+                    </div>
                 </div>
-        </footer>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../../img/carrusel3.jpg" class="card-img-top" alt="Sucursal 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Sucursal 3</h5>
+                        <p class="card-text">Dirección: Avenida 5 #67-89</p>
+                        <p class="card-text">Ciudad: Cali</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
+<br>
+<br>
+
+<footer style="background-color: #141b3e; color: white; padding: 20px 0;">
+    <div class="container text-center p-4 pb-0">
+        <section class="mb-4 d-flex justify-content-center">
+            <a class="btn btn-primary btn-floating m-1" href="https://www.facebook.com/" target="_blank" role="button">
+                <img src="../../img/facebook.png" alt="Facebook" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://twitter.com/" target="_blank" role="button">
+                <img src="../../img/gorjeo.png" alt="Twitter" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://www.instagram.com/" target="_blank" role="button">
+                <img src="../../img/instagram.png" alt="Instagram" width="30" height="30">
+            </a>
+            <a class="btn btn-primary btn-floating m-1" href="https://web.whatsapp.com/" target="_blank" role="button">
+                <img src="../../img/whatsapp.png" alt="WhatsApp" width="30" height="30">
+            </a>
+        </section>
+    </div>
+    
+    <div class="container">
+
+        <hr>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>&copy; 2025 Grupo Neptuno. Todos los derechos reservados. Copyray</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-phone-alt"></i> PBX: 3133030</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p><i class="fas fa-envelope"></i> Eltriocapitan@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>
