@@ -50,7 +50,8 @@
     <div class="container d-flex justify-content-center mt-5">
         <div class="card p-4" style="max-width: 400px; width: 100%; background-color: #e3e4e9; color: rgb(17, 35, 114);">
             <h2 class="text-center">Entrega de pedidos</h2>
-            <form action="reser_exit.html">
+            <form action="../../../Controller/Controller.php" method="POST">
+
                 <div class="mb-3">
                     <label for="tipo_servicio" class="form-label" style="color: #000000;">Tipo de Servicio:</label>
                     <select id="tipo_servicio" name="tipo_servicio" class="form-select" required>
@@ -81,7 +82,10 @@
                         <option value="transferencia">Transferencia</option>
                     </select>
                 </div>
-                <button type="button" class="btn btn-success w-100" onclick="redirigir()">Pagar</button>
+                <div class="mb-3">
+                    <label for="fecha" class="form-label" style="color: #000000;">Fecha</label>
+                    <input type="date" id="fecha" name="fecha" class="form-control" required>
+                </div>
 
             </form>
         </div>

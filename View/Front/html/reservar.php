@@ -8,6 +8,39 @@
     <link rel="stylesheet" href="../css/styler.css">
 </head>
 <body style="background-color: rgb(37, 35, 35); color: white;">
+    <body style="background-color: rgb(37, 35, 35); color: white;">
+
+<?php if (isset($_GET['exito'])): ?>
+<div class="modal fade" id="modalReserva" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="background:#141b3e; color:white;">
+      <div class="modal-header">
+        <h5 class="modal-title">¡Reserva Exitosa!</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Tu reserva ha sido registrada correctamente.  
+        ¡Gracias por confiar en nosotros!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var modal = new bootstrap.Modal(document.getElementById("modalReserva"));
+    modal.show();
+});
+</script>
+<?php endif; ?>
+
+
+
+
+
 
 <header style="background-color: #141b3e; padding: 20px 0;">
         <div class="container">
@@ -50,33 +83,46 @@
     <div class="container d-flex justify-content-center mt-5">
         <div class="card p-4" style="max-width: 400px; width: 100%; background-color: #141b3e; color: white;">
             <h2 class="text-center">Formulario de Reserva</h2>
-            <form action="reser_exit.html">
+            <form action="../../../Controller/ReservaController.php" method="POST">
+                <input type="hidden" name="accion" value="crearReserva">
+                <input type="hidden" name="tipo" value="cliente">
+
+
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" id="nombre" name="nombre" class="form-control" required>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">E-mail</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="tel" class="form-label">Teléfono</label>
-                    <input type="number" id="tel" name="telefono" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="num" class="form-label">Número de Personas</label>
-                    <input type="number" id="num" name="Numero" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="fecha" class="form-label">Fecha de Reserva</label>
-                    <input type="date" id="fecha" name="fecha" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="hora" class="form-label">Hora de Reserva</label>
-                    <input type="time" id="hora" name="hora" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Enviar Reserva</button>
-            </form>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="number" id="telefono" name="telefono" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="numero_personas" class="form-label">Número de Personas</label>
+        <input type="number" id="numero_personas" name="numero_personas" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="fecha" class="form-label">Fecha de Reserva</label>
+        <input type="date" id="fecha" name="fecha" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="hora" class="form-label">Hora de Reserva</label>
+        <input type="time" id="hora" name="hora" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Enviar Reserva</button>
+</form>
+
+
+
         </div>
     </div>
 

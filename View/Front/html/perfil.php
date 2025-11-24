@@ -1,12 +1,16 @@
 <?php
 require_once __DIR__ . "/../../../Controller/UsuarioController.php";
 require_once __DIR__ . "/../../../Controller/PlatoController.php";
+require_once __DIR__ . "/../../../Controller/ReservaController.php";
 
 $platoController = new PlatoController();
 $platos = $platoController->listarPlatos();
 
 $controller = new UsuarioController();
 $usuarios = $controller->listarUsuarios();
+
+$reservaController = new ReservaController();
+$reservas = $reservaController->listarReservas();
 
 session_start();
 $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
@@ -292,7 +296,102 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
         </div>
     </div>
 </div>
+<?php if (isset($_GET['nuevaReserva'])): ?>
+<div class="alert alert-info alert-dismissible fade show m-3" role="alert">
+    <strong>Nueva reserva registrada!</strong> Se ha agregado correctamente.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+<?php endif; ?> 
+
+
 <!------------------- Sección de reservas -------------------->
+<?php if (isset($_GET['eliminado'])): ?>
+<!-- Modal de Eliminación Exitosa -->
+<div class="modal fade" id="modalEliminado" tabindex="-1" aria-labelledby="modalEliminadoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="background:#1c1f2b; color:white;">
+      
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="fa-solid fa-check-circle"></i> Reserva eliminada
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        La reserva fue eliminada correctamente.
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var modal = new bootstrap.Modal(document.getElementById("modalEliminado"));
+    modal.show();
+});
+</script>
+
+<?php endif; ?>
+<?php if (isset($_GET['creado'])): ?>
+    <?php if ($_GET['tipo'] === 'admin'): ?>
+        <!-- Modal Cliente -->
+        <div class="modal fade" id="modalCreadoCliente" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="background:#141b3e; color:white;">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class="fa-solid fa-circle-check"></i> ¡Reserva creada exitosamente!</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">La reserva ha sido registrada correctamente.</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let modal = new bootstrap.Modal(document.getElementById("modalCreadoCliente"));
+            modal.show();
+        });
+        </script>
+    <?php else: ?>
+        <!-- Modal Administrador -->
+        <div class="modal fade" id="modalCreadoAdmin" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="background:#1c1f2b; color:white;">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i class="fa-solid fa-circle-check"></i> Reserva agregada (Admin)</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">Se registró una nueva reserva en el sistema.</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let modal = new bootstrap.Modal(document.getElementById("modalCreadoAdmin"));
+            modal.show();
+        });
+        </script>
+    <?php endif; ?>
+<?php endif; ?>
+
+
+
+
+
 <section class="container mt-5">
     <div class="card shadow">
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
@@ -320,51 +419,85 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
                         <?php if (!empty($reservas)): ?>
                             <?php foreach ($reservas as $r): ?>
                                 <tr>
-                                    <td><?= htmlspecialchars($r['Nombre']); ?></td>
-                                    <td><?= htmlspecialchars($r['Email']); ?></td>
-                                    <td><?= htmlspecialchars($r['Telefono']); ?></td>
-                                    <td><?= htmlspecialchars($r['Numero_personas']); ?></td>
-                                    <td><?= htmlspecialchars($r['Fecha_reserva']); ?></td>
-                                    <td><?= htmlspecialchars($r['Hora_reserva']); ?></td>
-                                   
-                                        <form method="POST" action="../../../Controller/ReservaController.php" class="d-inline">
-                                            <input type="hidden" name="id" value="<?= $r['Id_reserva']; ?>">
-                                            <button type="submit" name="accion" value="eliminarReserva" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que deseas eliminar esta reserva?');">
-                                                <i class="fa-solid fa-trash"></i> Eliminar
-                                            </button>
-                                        </form>
-                                       
-                                        <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#editarModalReserva<?= $r['Id_reserva']; ?>">
-                                            <i class="fa-solid fa-pen"></i> Editar
-                                        </button>
-                                    </td>
-                                </tr>
+    <td><?= htmlspecialchars($r['Nombre']); ?></td>
+    <td><?= htmlspecialchars($r['Email']); ?></td>
+    <td><?= htmlspecialchars($r['Telefono']); ?></td>
+    <td><?= htmlspecialchars($r['Numero_personas']); ?></td>
+    <td><?= htmlspecialchars($r['Fecha_reserva']); ?></td>
+    <td><?= htmlspecialchars($r['Hora_reserva']); ?></td>
+
+    <td class="text-center">
+
+        <!-- ELIMINAR -->
+        <form method="POST" action="../../../Controller/ReservaController.php" class="d-inline">
+    <input type="hidden" name="id" value="<?= $r['Id_reserva']; ?>">
+    <input type="hidden" name="accion" value="eliminarReserva">
+    <button type="submit" class="btn btn-danger btn-sm"
+        onclick="return confirm('¿Seguro que deseas eliminar esta reserva?');">
+        <i class="fa-solid fa-trash"></i>
+    </button>
+</form>
+
+
+
+        <!-- EDITAR -->
+        <button type="button"
+            class="btn btn-dark btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#editarModalReserva<?= $r['Id_reserva']; ?>">
+            <i class="fa-solid fa-pen"></i>
+        </button>
+
+    </td>
+</tr>
+
 
                                 <div class="modal fade" id="editarModalReserva<?= $r['Id_reserva']; ?>" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Editar Reserva</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="../../../Controller/ReservaController.php">
-                                                    <input type="hidden" name="id" value="<?= $r['Id_reserva']; ?>">
-                                                    <input type="text" name="nombre" value="<?= htmlspecialchars($r['Nombre']); ?>" class="form-control mb-2" required>
-                                                    <input type="email" name="email" value="<?= htmlspecialchars($r['Email']); ?>" class="form-control mb-2" required>
-                                                    <input type="number" name="telefono" value="<?= htmlspecialchars($r['Telefono']); ?>" class="form-control mb-2" required>
-                                                    <input type="number" name="numero_personas" value="<?= htmlspecialchars($r['Numero_personas']); ?>" class="form-control mb-2" required>
-                                                    <input type="date" name="fecha" value="<?= htmlspecialchars($r['Fecha_reserva']); ?>" class="form-control mb-2" required>
-                                                    <input type="time" name="hora" value="<?= htmlspecialchars($r['Hora_reserva']); ?>" class="form-control mb-2" required>
-                                                    <input type="hidden" name="accion" value="editarReserva">
-                                                    <div class="text-end">
-                                                        <button type="submit" class="btn btn-dark">Guardar cambios</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">
+                    <i class="fa-solid fa-pen-to-square"></i> Editar reserva
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <form method="POST" action="../../../Controller/ReservaController.php">
+
+                    <input type="hidden" name="id" value="<?= $r['Id_reserva']; ?>">
+
+                    <input type="text" name="nombre" value="<?= htmlspecialchars($r['Nombre']); ?>" class="form-control mb-3" required>
+
+                    <input type="email" name="email" value="<?= htmlspecialchars($r['Email']); ?>" class="form-control mb-3" required>
+
+                    <input type="number" name="telefono" value="<?= htmlspecialchars($r['Telefono']); ?>" class="form-control mb-3" required>
+
+                    <input type="number" name="numero_personas" value="<?= htmlspecialchars($r['Numero_personas']); ?>" class="form-control mb-3" required>
+
+                    <input type="date" name="fecha" value="<?= htmlspecialchars($r['Fecha_reserva']); ?>" class="form-control mb-3" required>
+
+                    <input type="time" name="hora" value="<?= htmlspecialchars($r['Hora_reserva']); ?>" class="form-control mb-3" required>
+
+                    <input type="hidden" name="accion" value="editarReserva">
+
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-dark">
+                            <i class="fa-solid fa-save"></i> Guardar cambios
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 
                             <?php endforeach; ?>
                         <?php else: ?>
@@ -378,30 +511,44 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
 </section>
 
 
-<div class="modal fade" id="registroModalReserva" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="registroModalReserva" tabindex="-1" aria-labelledby="registroModalReservaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Registrar Nueva Reserva</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="registroModalReservaLabel">
+                    <i class="fa-solid fa-calendar-plus"></i> Registrar nueva reserva
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
+
             <div class="modal-body">
-                <form method="POST" action="../../../Controller/ReservaController.php">
+                <form action="../../../Controller/ReservaController.php" method="POST">
+
                     <input type="text" name="nombre" class="form-control mb-2" placeholder="Nombre" required>
-                    <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
-                    <input type="number" name="telefono" class="form-control mb-2" placeholder="Teléfono" required>
+                    <input type="email" name="email" class="form-control mb-2" placeholder="Correo" required>
+                    <input type="text" name="telefono" class="form-control mb-2" placeholder="Teléfono" required>
+
                     <input type="number" name="numero_personas" class="form-control mb-2" placeholder="Número de personas" required>
+
                     <input type="date" name="fecha" class="form-control mb-2" required>
                     <input type="time" name="hora" class="form-control mb-2" required>
+
                     <input type="hidden" name="accion" value="crearReserva">
+
                     <div class="text-end">
-                        <button type="submit" class="btn btn-dark">Registrar</button>
+                        <button type="submit" class="btn btn-dark">
+                            <i class="fa-solid fa-check"></i> Registrar
+                        </button>
                     </div>
                 </form>
             </div>
+
         </div>
     </div>
 </div>
+
+
 
 
 

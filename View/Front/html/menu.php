@@ -47,31 +47,58 @@
             </div>
         </div>
     </header>
+   <?php
+require_once __DIR__ . "/../../../Config/conexion.php";
 
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">🍔 Domicilios Croque</a>
-            <button class="cart-button" data-bs-toggle="offcanvas" data-bs-target="#carrito">🛒 Carrito <span id="cartButton" class="badge bg-danger">0</span></button>
-        </div>
-    </nav>
+$pdo = Database::connection();
+// Traemos todos los productos de la tabla "producto"
+$productos = $pdo->query("SELECT * FROM producto")->fetchAll(PDO::FETCH_ASSOC);
+?>
 
-        <div class="container py-5">
-            <h1 class="text-center mb-4">Menú de Platos</h1>
-    
-            <div class="text-center mb-4">
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="menuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Elegir sección
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="menuDropdown">
-                        <li><a class="dropdown-item" href="#entradas">Entradas</a></li>
-                        <li><a class="dropdown-item" href="#platos-principales">Platos Fuertes</a></li>
-                        <li><a class="dropdown-item" href="#postres">Postres</a></li>
-                        <li><a class="dropdown-item" href="#bebidas">Bebidas</a></li>
-                    </ul>
-                </div>
-            </div>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">🍔 Domicilios Croque</a>
+        <button class="cart-button btn btn-outline-light" data-bs-toggle="offcanvas" data-bs-target="#productosOffcanvas">
+            🛒 Productos <span id="cartButton" class="badge bg-danger"><?= $cantidad ?? 0 ?></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Offcanvas de productos -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="productosOffcanvas" aria-labelledby="productosLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="productosLabel">Productos Disponibles</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body">
+        <?php if (empty($productos)): ?>
+            <p>No hay productos disponibles.</p>
+        <?php else: ?>
+            <ul class="list-group" id="lista-productos">
+                <?php foreach ($productos as $item): ?>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold"><?= $item['Nombre_producto'] ?></div>
+                            <?= $item['Descripcion'] ?><br>
+                            Tipo: <?= $item['Tipo_producto'] ?><br>
+                            <strong>$<?= $item['Precio_producto'] ?></strong>
+                        </div>
+                        <?php if(!empty($item['Imagen'])): ?>
+                            <img src="<?= $item['Imagen'] ?>" alt="<?= $item['Nombre_producto'] ?>" style="max-width:60px; margin-left:10px;">
+                        <?php endif; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
     
           
             <div id="entradas" class="mb-4">
@@ -295,17 +322,66 @@
        </div>
 
         </script>
-        <script>
-            let totalPrice = 0;
-    
-            function addToCart(price) {
-                totalPrice += price;
-                document.getElementById('cartButton').innerText = Carrito: $${totalPrice};
-            }
-        </script>
-    
-    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+       <script>
+function agregarAlCarrito(nombre, descripcion, precio) {
+    let formData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('descripcion', descripcion);
+    formData.append('precio', precio);
+
+    fetch("../../../Controller/CarritoController.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(res => {
+        if (res.status === "ok") {
+           
+            document.getElementById("cartButton").textContent = res.cantidad;
+
+          
+            mostrarModalCarrito(nombre);
+        } else {
+            alert("Error: " + res.message);
+        }
+    })
+    .catch(err => console.error(err));
+}
+
+
+
+function mostrarModalCarrito(nombreProducto) {
+    const modalHtml = `
+    <div class="modal fade" id="modalCarrito" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background:#141b3e; color:white;">
+                <div class="modal-header">
+                    <h5 class="modal-title">Producto agregado</h5>
+                    <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <strong>${nombreProducto}</strong> fue agregado al carrito.
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>`;
+
+    // Insertamos el modal en el body
+    document.body.insertAdjacentHTML("beforeend", modalHtml);
+
+    // Mostramos el modal
+    var modal = new bootstrap.Modal(document.getElementById("modalCarrito"));
+    modal.show();
+
+    // Eliminamos el modal del DOM al cerrarlo para no duplicarlo
+    document.getElementById("modalCarrito").addEventListener("hidden.bs.modal", function () {
+        this.remove();
+    });
+}
+
     
 
 
