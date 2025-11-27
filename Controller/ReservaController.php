@@ -17,30 +17,29 @@ class ReservaController {
 
                 
              case 'crearReserva':
-    $nombre = $_POST['nombre'];
-    $email = $_POST['email'];
-    $telefono = $_POST['telefono'];
-    $numero_personas = $_POST['numero_personas'];
-    $fecha = $_POST['fecha'];
-    $hora = $_POST['hora'];
+                    if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
 
-    $this->model->crearReserva($nombre, $email, $telefono, $numero_personas, $fecha, $hora);
 
-    session_start();
+                    $nombre = $_POST['nombre'];
+                    $email = $_POST['email'];
+                    $telefono = $_POST['telefono'];
+                    $numero_personas = $_POST['numero_personas'];
+                    $fecha = $_POST['fecha'];
+                    $hora = $_POST['hora'];
 
-    // Si la sesión indica que es admin
-    if (isset($_SESSION['Usuario']) && $_SESSION['Usuario']['Rol'] === 'admin') {
-        // Redirigir al panel del admin con alerta
-        header("Location: ../View/Front/html/perfil.php?nuevaReserva=1");
-    } else {
-        // Redirigir al formulario del cliente
-        header("Location: ../View/Front/html/reservar.php?exito=1");
-    }
+                    $this->model->crearReserva($nombre, $email, $telefono, $numero_personas, $fecha, $hora);
 
-    exit;
-                // ==========================
-                // ELIMINAR RESERVA
-                // ==========================
+                    if (isset($_SESSION['Usuario']) && $_SESSION['Usuario']['Rol'] === 'admin') {
+                        header("Location: ../View/Front/html/perfil.php?nuevaReserva=1");
+                        exit;
+                    } else {
+                        header("Location: ../View/Front/html/perfil.php?nuevaReserva=1");
+                        exit;
+                    }
+
+              
                 case 'eliminarReserva':
                     $id = $_POST['id'] ?? null;
 
@@ -53,9 +52,7 @@ class ReservaController {
                     exit;
 
 
-                // ==========================
-                // EDITAR RESERVA
-                // ==========================
+                
                 case 'editarReserva':
                     $id = $_POST['id'];
                     $nombre = $_POST['nombre'];

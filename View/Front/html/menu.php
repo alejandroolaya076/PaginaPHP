@@ -51,11 +51,11 @@
 require_once __DIR__ . "/../../../Config/conexion.php";
 
 $pdo = Database::connection();
-// Traemos todos los productos de la tabla "producto"
+
 $productos = $pdo->query("SELECT * FROM producto")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!-- Navbar -->
+
 <nav class="navbar navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="#">🍔 Domicilios Croque</a>
@@ -65,7 +65,6 @@ $productos = $pdo->query("SELECT * FROM producto")->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </nav>
 
-<!-- Offcanvas de productos -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="productosOffcanvas" aria-labelledby="productosLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="productosLabel">Productos Disponibles</h5>
@@ -369,14 +368,11 @@ function mostrarModalCarrito(nombreProducto) {
         </div>
     </div>`;
 
-    // Insertamos el modal en el body
     document.body.insertAdjacentHTML("beforeend", modalHtml);
 
-    // Mostramos el modal
     var modal = new bootstrap.Modal(document.getElementById("modalCarrito"));
     modal.show();
 
-    // Eliminamos el modal del DOM al cerrarlo para no duplicarlo
     document.getElementById("modalCarrito").addEventListener("hidden.bs.modal", function () {
         this.remove();
     });

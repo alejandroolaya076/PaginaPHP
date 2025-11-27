@@ -10,32 +10,7 @@
 <body style="background-color: rgb(37, 35, 35); color: white;">
     <body style="background-color: rgb(37, 35, 35); color: white;">
 
-<?php if (isset($_GET['exito'])): ?>
-<div class="modal fade" id="modalReserva" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style="background:#141b3e; color:white;">
-      <div class="modal-header">
-        <h5 class="modal-title">¡Reserva Exitosa!</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        Tu reserva ha sido registrada correctamente.  
-        ¡Gracias por confiar en nosotros!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    var modal = new bootstrap.Modal(document.getElementById("modalReserva"));
-    modal.show();
-});
-</script>
-<?php endif; ?>
 
 
 

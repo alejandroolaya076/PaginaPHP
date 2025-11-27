@@ -20,7 +20,7 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración - FASTIE</title>
+    <title>Panel de Administración</title>
     <link rel="stylesheet" href="../../Css/perfil.css">
     <link rel="stylesheet" href="../../Css/bootstrap/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -191,7 +191,7 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
                                     <td><?= htmlspecialchars($u['Precio_producto']); ?></td>
                                     <td><?= htmlspecialchars($u['Tipo_producto']); ?></td>
                                     <td><?= htmlspecialchars($u['Descripcion']); ?></td>
-                                    <td><img src="../../../<?= htmlspecialchars($u['Imagen']); ?>" width="80" height="80" style="object-fit: cover; border-radius: 8px;"></td>
+                                    <td><img src="/PaginaPHP/View/img<?= htmlspecialchars($u['Imagen']); ?>" width="80" height="80" style="object-fit: cover; border-radius: 8px;"></td>
                                     <td class="text-center">
                                         <form method="POST" action="../../../Controller/PlatoController.php" class="d-inline">
                                             <input type="hidden" name="id" value="<?= $u['Id_producto']; ?>">
@@ -246,7 +246,6 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
 
 </div>
 
-<!------------------------- Modal registrar usuario -------------------------->
 <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -272,7 +271,6 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
     </div>
 </div>
 
-<!------------------------- Modal registrar plato -------------------------->
 <div class="modal fade" id="registroModalPlato" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -296,99 +294,37 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
         </div>
     </div>
 </div>
-<?php if (isset($_GET['nuevaReserva'])): ?>
-<div class="alert alert-info alert-dismissible fade show m-3" role="alert">
-    <strong>Nueva reserva registrada!</strong> Se ha agregado correctamente.
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-</div>
-<?php endif; ?> 
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+session_start();
+}
 
-
-<!------------------- Sección de reservas -------------------->
-<?php if (isset($_GET['eliminado'])): ?>
-<!-- Modal de Eliminación Exitosa -->
-<div class="modal fade" id="modalEliminado" tabindex="-1" aria-labelledby="modalEliminadoLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style="background:#1c1f2b; color:white;">
-      
-      <div class="modal-header">
-        <h5 class="modal-title">
-          <i class="fa-solid fa-check-circle"></i> Reserva eliminada
-        </h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body">
-        La reserva fue eliminada correctamente.
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Aceptar</button>
-      </div>
-
+if (isset($_GET['nuevaReserva'])): ?>
+    <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+        <strong>¡Reserva creada exitosamente!</strong> Se ha registrado en el sistema.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-  </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    var modal = new bootstrap.Modal(document.getElementById("modalEliminado"));
-    modal.show();
-});
-</script>
-
-<?php endif; ?>
-<?php if (isset($_GET['creado'])): ?>
-    <?php if ($_GET['tipo'] === 'admin'): ?>
-        <!-- Modal Cliente -->
-        <div class="modal fade" id="modalCreadoCliente" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content" style="background:#141b3e; color:white;">
-                    <div class="modal-header">
-                        <h5 class="modal-title"><i class="fa-solid fa-circle-check"></i> ¡Reserva creada exitosamente!</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">La reserva ha sido registrada correctamente.</div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            let modal = new bootstrap.Modal(document.getElementById("modalCreadoCliente"));
-            modal.show();
-        });
-        </script>
-    <?php else: ?>
-        <!-- Modal Administrador -->
-        <div class="modal fade" id="modalCreadoAdmin" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content" style="background:#1c1f2b; color:white;">
-                    <div class="modal-header">
-                        <h5 class="modal-title"><i class="fa-solid fa-circle-check"></i> Reserva agregada (Admin)</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">Se registró una nueva reserva en el sistema.</div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            let modal = new bootstrap.Modal(document.getElementById("modalCreadoAdmin"));
-            modal.show();
-        });
-        </script>
-    <?php endif; ?>
+    
 <?php endif; ?>
 
+<?php
 
+if (isset($_GET['eliminado'])): ?>
+    <div class="alert alert-warning alert-dismissible fade show m-3" role="alert">
+        <strong>Reserva eliminada correctamente.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<?php endif; ?>
+
+<?php
+
+if (isset($_GET['update'])): ?>
+    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
+        <strong>Datos actualizados correctamente.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<?php endif; ?>
+?>
 
 
 
@@ -419,86 +355,68 @@ document.addEventListener("DOMContentLoaded", function() {
                         <?php if (!empty($reservas)): ?>
                             <?php foreach ($reservas as $r): ?>
                                 <tr>
-    <td><?= htmlspecialchars($r['Nombre']); ?></td>
-    <td><?= htmlspecialchars($r['Email']); ?></td>
-    <td><?= htmlspecialchars($r['Telefono']); ?></td>
-    <td><?= htmlspecialchars($r['Numero_personas']); ?></td>
-    <td><?= htmlspecialchars($r['Fecha_reserva']); ?></td>
-    <td><?= htmlspecialchars($r['Hora_reserva']); ?></td>
+                                    <td><?= htmlspecialchars($r['Nombre']); ?></td>
+                                    <td><?= htmlspecialchars($r['Email']); ?></td>
+                                    <td><?= htmlspecialchars($r['Telefono']); ?></td>
+                                    <td><?= htmlspecialchars($r['Numero_personas']); ?></td>
+                                    <td><?= htmlspecialchars($r['Fecha_reserva']); ?></td>
+                                    <td><?= htmlspecialchars($r['Hora_reserva']); ?></td>
 
-    <td class="text-center">
+                                    <td class="text-center">
+                                    
+                                        <form method="POST" action="../../../Controller/ReservaController.php" class="d-inline">
+                                            <input type="hidden" name="id" value="<?= $r['Id_reserva']; ?>">
+                                            <input type="hidden" name="accion" value="eliminarReserva">
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('¿Seguro que deseas eliminar esta reserva?');">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
 
-        <!-- ELIMINAR -->
-        <form method="POST" action="../../../Controller/ReservaController.php" class="d-inline">
-    <input type="hidden" name="id" value="<?= $r['Id_reserva']; ?>">
-    <input type="hidden" name="accion" value="eliminarReserva">
-    <button type="submit" class="btn btn-danger btn-sm"
-        onclick="return confirm('¿Seguro que deseas eliminar esta reserva?');">
-        <i class="fa-solid fa-trash"></i>
-    </button>
-</form>
+                                       
+                                        <button type="button"
+                                            class="btn btn-dark btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editarModalReserva<?= $r['Id_reserva']; ?>">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </td>
+                                </tr>
 
-
-
-        <!-- EDITAR -->
-        <button type="button"
-            class="btn btn-dark btn-sm"
-            data-bs-toggle="modal"
-            data-bs-target="#editarModalReserva<?= $r['Id_reserva']; ?>">
-            <i class="fa-solid fa-pen"></i>
-        </button>
-
-    </td>
-</tr>
-
-
+                            
                                 <div class="modal fade" id="editarModalReserva<?= $r['Id_reserva']; ?>" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
 
-            <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title">
-                    <i class="fa-solid fa-pen-to-square"></i> Editar reserva
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
+                                            <div class="modal-header bg-dark text-white">
+                                                <h5 class="modal-title"><i class="fa-solid fa-pen-to-square"></i> Editar reserva</h5>
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                                            </div>
 
-            <div class="modal-body">
+                                            <div class="modal-body">
+                                                <form method="POST" action="../../../Controller/ReservaController.php">
+                                                    <input type="hidden" name="id" value="<?= $r['Id_reserva']; ?>">
 
-                <form method="POST" action="../../../Controller/ReservaController.php">
+                                                    <input type="text" name="nombre" value="<?= htmlspecialchars($r['Nombre']); ?>" class="form-control mb-3" required>
+                                                    <input type="email" name="email" value="<?= htmlspecialchars($r['Email']); ?>" class="form-control mb-3" required>
+                                                    <input type="number" name="telefono" value="<?= htmlspecialchars($r['Telefono']); ?>" class="form-control mb-3" required>
+                                                    <input type="number" name="numero_personas" value="<?= htmlspecialchars($r['Numero_personas']); ?>" class="form-control mb-3" required>
+                                                    <input type="date" name="fecha" value="<?= htmlspecialchars($r['Fecha_reserva']); ?>" class="form-control mb-3" required>
+                                                    <input type="time" name="hora" value="<?= htmlspecialchars($r['Hora_reserva']); ?>" class="form-control mb-3" required>
 
-                    <input type="hidden" name="id" value="<?= $r['Id_reserva']; ?>">
+                                                    <input type="hidden" name="accion" value="editarReserva">
 
-                    <input type="text" name="nombre" value="<?= htmlspecialchars($r['Nombre']); ?>" class="form-control mb-3" required>
+                                                    <div class="text-end">
+                                                        <button type="submit" class="btn btn-dark">
+                                                            <i class="fa-solid fa-save"></i> Guardar cambios
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
 
-                    <input type="email" name="email" value="<?= htmlspecialchars($r['Email']); ?>" class="form-control mb-3" required>
-
-                    <input type="number" name="telefono" value="<?= htmlspecialchars($r['Telefono']); ?>" class="form-control mb-3" required>
-
-                    <input type="number" name="numero_personas" value="<?= htmlspecialchars($r['Numero_personas']); ?>" class="form-control mb-3" required>
-
-                    <input type="date" name="fecha" value="<?= htmlspecialchars($r['Fecha_reserva']); ?>" class="form-control mb-3" required>
-
-                    <input type="time" name="hora" value="<?= htmlspecialchars($r['Hora_reserva']); ?>" class="form-control mb-3" required>
-
-                    <input type="hidden" name="accion" value="editarReserva">
-
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-dark">
-                            <i class="fa-solid fa-save"></i> Guardar cambios
-                        </button>
-                    </div>
-
-                </form>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-
+                                        </div>
+                                    </div>
+                                </div>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr><td colspan="7" class="text-center text-muted py-3">No hay reservas registradas.</td></tr>
@@ -509,6 +427,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
     </div>
 </section>
+
 
 
 <div class="modal fade" id="registroModalReserva" tabindex="-1" aria-labelledby="registroModalReservaLabel" aria-hidden="true">
@@ -524,13 +443,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
             <div class="modal-body">
                 <form action="../../../Controller/ReservaController.php" method="POST">
-
                     <input type="text" name="nombre" class="form-control mb-2" placeholder="Nombre" required>
                     <input type="email" name="email" class="form-control mb-2" placeholder="Correo" required>
                     <input type="text" name="telefono" class="form-control mb-2" placeholder="Teléfono" required>
-
                     <input type="number" name="numero_personas" class="form-control mb-2" placeholder="Número de personas" required>
-
                     <input type="date" name="fecha" class="form-control mb-2" required>
                     <input type="time" name="hora" class="form-control mb-2" required>
 
@@ -547,10 +463,173 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
     </div>
 </div>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
+if (isset($_GET['nuevoDomicilio'])): ?>
+    <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+        <strong>Domicilio creado exitosamente</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<?php endif; ?>
 
+<?php if (isset($_GET['eliminado'])): ?>
+    <div class="alert alert-warning alert-dismissible fade show m-3" role="alert">
+        <strong>Domicilio eliminado correctamente.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<?php endif; ?>
 
+<?php if (isset($_GET['update'])): ?>
+    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
+        <strong>Datos actualizados correctamente.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<?php endif; ?>
 
+<section class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="fa-solid fa-motorcycle"></i> Lista de Domicilios</h5>
+            <button type="button" class="btn btn-light text-dark" data-bs-toggle="modal" data-bs-target="#modalNuevoDomicilio">
+                <i class="fa-solid fa-plus"></i> Registrar nuevo domicilio
+            </button>
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Tipo de servicio</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                            <th>Método de pago</th>
+                            <th>Fecha</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($domicilios)): ?>
+                            <?php foreach ($domicilios as $d): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($d['tipo_servicio']); ?></td>
+                                    <td><?= htmlspecialchars($d['nombre']); ?></td>
+                                    <td><?= htmlspecialchars($d['telefono']); ?></td>
+                                    <td><?= htmlspecialchars($d['direccion']); ?></td>
+                                    <td><?= htmlspecialchars($d['metodo_pago']); ?></td>
+                                    <td><?= htmlspecialchars($d['fecha']); ?></td>
+                                    <td class="text-center">
+                                        <form method="POST" action="../../../Controller/domicilioController.php" class="d-inline">
+                                            <input type="hidden" name="id" value="<?= $d['id']; ?>">
+                                            <input type="hidden" name="accion" value="eliminarDomicilio">
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('¿Seguro deseas eliminar este domicilio?');">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
+
+                                        <button type="button"
+                                            class="btn btn-dark btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#modalEditarDomicilio<?= $d['id']; ?>">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="7" class="text-center text-muted py-3">No hay domicilios registrados.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modales de edición -->
+<?php if (!empty($domicilios)): ?>
+    <?php foreach ($domicilios as $d): ?>
+        <div class="modal fade" id="modalEditarDomicilio<?= $d['id']; ?>" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                        <h5 class="modal-title"><i class="fa-solid fa-pen-to-square"></i> Editar Domicilio</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form method="POST" action="../../../Controller/domicilioController.php">
+                            <input type="hidden" name="id" value="<?= $d['id']; ?>">
+
+                            <input type="text" name="tipo_servicio" value="<?= htmlspecialchars($d['tipo_servicio']); ?>" class="form-control mb-2" placeholder="Tipo de servicio" required>
+                            <input type="text" name="nombre" value="<?= htmlspecialchars($d['nombre']); ?>" class="form-control mb-2" placeholder="Nombre" required>
+                            <input type="text" name="telefono" value="<?= htmlspecialchars($d['telefono']); ?>" class="form-control mb-2" placeholder="Teléfono" required>
+                            <input type="text" name="direccion" value="<?= htmlspecialchars($d['direccion']); ?>" class="form-control mb-2" placeholder="Dirección" required>
+
+                            <select class="form-control mb-2" name="metodo_pago" required>
+                                <option value="Efectivo" <?= $d['metodo_pago'] == 'Efectivo' ? 'selected' : ''; ?>>Efectivo</option>
+                            </select>
+
+                            <input type="date" name="fecha" value="<?= htmlspecialchars($d['fecha']); ?>" class="form-control mb-3" required>
+
+                            <input type="hidden" name="accion" value="editarDomicilio">
+
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-dark">
+                                    <i class="fa-solid fa-save"></i> Guardar cambios
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
+
+<!-- Modal Nuevo Domicilio -->
+<div class="modal fade" id="modalNuevoDomicilio" tabindex="-1" aria-labelledby="modalNuevoDomicilioLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="modalNuevoDomicilioLabel">
+                    <i class="fa-solid fa-motorcycle"></i> Registrar nuevo domicilio
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <form action="../../../Controller/domicilioController.php" method="POST">
+                    <input type="text" name="tipo_servicio" class="form-control mb-2" placeholder="Tipo de servicio" required>
+                    <input type="text" name="nombre" class="form-control mb-2" placeholder="Nombre" required>
+                    <input type="text" name="telefono" class="form-control mb-2" placeholder="Teléfono" required>
+                    <input type="text" name="direccion" class="form-control mb-2" placeholder="Dirección" required>
+
+                    <select class="form-control mb-2" name="metodo_pago" required>
+                        <option value="Efectivo">Efectivo</option>
+                    </select>
+
+                    <input type="date" name="fecha" class="form-control mb-3" required>
+
+                    <input type="hidden" name="accion" value="crearDomicilio">
+
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-dark">
+                            <i class="fa-solid fa-check"></i> Registrar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </body>

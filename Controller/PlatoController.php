@@ -13,64 +13,116 @@ class PlatoController {
     }
 
     public function manejarAcciones() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $accion = $_POST['accion'] ?? '';
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            return;
+        }
 
-            switch ($accion) {
+        $accion = $_POST['accion'] ?? '';
 
-                
-                case 'registroPlato':
-                    $nombre = $_POST['Nombre_producto'];
-                    $precio = $_POST['Precio'];
-                    $tipo = $_POST['Tipo_producto'];
-                    $descripcion = $_POST['Descripcion'];
+        switch ($accion) {
+            case 'registroPlato':
+                $this->registroPlato();
+                break;
 
-                    $imagen = null;
-                    if (!empty($_FILES['Imagen']['name'])) {
-                        $nombreImg = basename($_FILES['Imagen']['name']);
-                        $rutaFisica = __DIR__ . "/../View/img/img/" . $nombreImg;
-                        move_uploaded_file($_FILES['Imagen']['tmp_name'], $rutaFisica);
+            case 'eliminarPlato':
+                $this->eliminarPlato();
+                break;
 
-                       
-                        $imagen = "View/img/img/" . $nombreImg;
-                    }
+            case 'editarPlato':
+                $this->editarPlato();
+                break;
 
-                    $this->model->registrarPlato($nombre, $precio, $tipo, $descripcion, $imagen);
-                    header("Location: ../View/Front/html/perfil.php");
-                    break;
+            default:
+                header("Location: ../View/Front/html/perfil.php");
+                exit();
+        }
+    }
 
-              
-                case 'eliminarPlato':
-                    $id = $_POST['id'];
-                    $this->model->eliminarPlato($id);
-                    header("Location: ../View/Front/html/perfil.php");
-                    break;
+    private function registroPlato() {
+        $nombre = $_POST['Nombre_producto'] ?? '';
+        $precio = $_POST['Precio'] ?? 0;
+        $tipo = $_POST['Tipo_producto'] ?? '';
+        $descripcion = $_POST['Descripcion'] ?? '';
 
-                case 'editarPlato':
-                    $id = $_POST['id'];
-                    $nombre = $_POST['Nombre_producto'];
-                    $precio = $_POST['Precio'];
-                    $tipo = $_POST['Tipo_producto'];
-                    $descripcion = $_POST['Descripcion'];
-                    $imagen_actual = $_POST['Imagen_actual'];
+        $imagen = null;
 
-                    if (!empty($_FILES['Imagen']['name'])) {
-                        $nombreImg = basename($_FILES['Imagen']['name']);
-                        $rutaFisica = __DIR__ . "/../View/img/img/" . $nombreImg;
-                        move_uploaded_file($_FILES['Imagen']['tmp_name'], $rutaFisica);
-                        $imagen = "View/img/img/" . $nombreImg;
-                    } else {
-                        $imagen = $imagen_actual;
-                    }
-
-                    $this->model->editarPlato($id, $nombre, $precio, $tipo, $descripcion, $imagen);
-                    header("Location: ../View/Front/html/perfil.php");
-                    break;
+        if (!empty($_FILES['Imagen']['name'])) {
+            $imagen = $this->procesarImagen($_FILES['Imagen']);
+            if ($imagen === false) {
+                header("Location: ../View/Front/html/perfil.php?errorImagen=1");
+                exit();
             }
         }
+
+        $this->model->registrarPlato($nombre, $precio, $tipo, $descripcion, $imagen);
+        header("Location: ../View/Front/html/perfil.php?platoRegistrado=ok");
+        exit();
+    }
+
+    private function eliminarPlato() {
+        $id = $_POST['id'] ?? null;
+        if ($id) {
+            $this->model->eliminarPlato($id);
+        }
+        header("Location: ../View/Front/html/perfil.php?platoEliminado=ok");
+        exit();
+    }
+
+    private function editarPlato() {
+        $id = $_POST['id'] ?? null;
+        $nombre = $_POST['Nombre_producto'] ?? '';
+        $precio = $_POST['Precio'] ?? 0;
+        $tipo = $_POST['Tipo_producto'] ?? '';
+        $descripcion = $_POST['Descripcion'] ?? '';
+        $imagen_actual = $_POST['Imagen_actual'] ?? null;
+
+        $imagen = $imagen_actual;
+
+        if (!empty($_FILES['Imagen']['name'])) {
+            $procesada = $this->procesarImagen($_FILES['Imagen']);
+            if ($procesada === false) {
+                header("Location: ../View/Front/html/perfil.php?errorImagen=1");
+                exit();
+            }
+            $imagen = $procesada;
+        }
+
+        if ($id) {
+            $this->model->editarPlato($id, $nombre, $precio, $tipo, $descripcion, $imagen);
+        }
+
+        header("Location: ../View/Front/html/perfil.php?platoEditado=ok");
+        exit();
+    }
+
+    private function procesarImagen(array $file) {
+        $extPermitidas = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+        $originalName = basename($file['name']);
+        $ext = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+
+        if (!in_array($ext, $extPermitidas)) {
+            return false;
+        }
+
+        $nuevoNombre = uniqid('plato_') . '.' . $ext;
+        $rutaFisica = $_SERVER['DOCUMENT_ROOT'] . "/PAGINAPHP/View/img" . $nuevoNombre;
+
+        $dir = dirname($rutaFisica);
+        if (!is_dir($dir)) {
+            if (!mkdir($dir, 0755, true)) {
+                return false;
+            }
+        }
+
+        if (!move_uploaded_file($file['tmp_name'], $rutaFisica)) {
+            return false;
+        }
+
+        return "PAGINAPHP/View/img" . $nuevoNombre;
     }
 }
 
+
 $controller = new PlatoController();
 $controller->manejarAcciones();
-?>

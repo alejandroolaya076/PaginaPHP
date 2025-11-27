@@ -17,33 +17,6 @@
                 <div class="col-md-3">
                     <img src="../../img/logo croque.png" alt="Foto Circular" class="rounded-circle img-fluid" style="max-width: 80px; height: auto;">
                 </div>
-                <div class="col-md-9">
-                    <nav class="navbar navbar-expand-lg navbar-dark">
-                        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item" >
-                                <a class="nav-link" href="../../../index.html" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">INICIO</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./menu.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">MENU</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./sobre.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);"> NOSOTROS</a>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="./reservar.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">RESERVAR</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./domicilios.php" style="font-size: clamp(0.8rem, 1.3vw, 3rem);">DOMICILIOS </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./inicio_sesion.php" style="font-size: clamp(0.8rem, 1.4vw, 3rem);">LOGIN</a>
-                            </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
             </div>
         </div>
 </header>

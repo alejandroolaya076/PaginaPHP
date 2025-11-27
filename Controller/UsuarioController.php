@@ -34,7 +34,7 @@ class UsuarioController {
         }
 
     } else {
-        header("Location:../View/Front/html/inicio_sesion.php");
+        header("Location:../View/Front/html/perfil.php");
         exit();
     }
 }
