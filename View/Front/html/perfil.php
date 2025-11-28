@@ -191,7 +191,7 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
                                     <td><?= htmlspecialchars($u['Precio_producto']); ?></td>
                                     <td><?= htmlspecialchars($u['Tipo_producto']); ?></td>
                                     <td><?= htmlspecialchars($u['Descripcion']); ?></td>
-                                    <td><img src="/PaginaPHP/View/img<?= htmlspecialchars($u['Imagen']); ?>" width="80" height="80" style="object-fit: cover; border-radius: 8px;"></td>
+                                    <td><img src="<?= htmlspecialchars($u['Imagen']); ?>" width="80" height="80"></td>
                                     <td class="text-center">
                                         <form method="POST" action="../../../Controller/PlatoController.php" class="d-inline">
                                             <input type="hidden" name="id" value="<?= $u['Id_producto']; ?>">
@@ -222,7 +222,7 @@ $nombreUsuario = $_SESSION['Usuario']['Nombre'] ?? "Administrador";
                                                     <input type="text" name="Descripcion" value="<?= htmlspecialchars($u['Descripcion']); ?>" class="form-control mb-2" required>
                                                     <input type="hidden" name="Imagen_actual" value="<?= htmlspecialchars($u['Imagen']); ?>">
                                                     <label>Imagen actual:</label><br>
-                                                    <img src="../../../img<?= htmlspecialchars($u['Imagen']); ?>" width="80" height="80" style="object-fit: cover; border-radius: 8px;"><br>
+                                                    <img src="/PaginaPHP/View/img/<?= htmlspecialchars($u['Imagen']); ?>" width="80" height="80"><br>
                                                     <input type="file" name="Imagen" class="form-control mb-2">
                                                     <input type="hidden" name="accion" value="editarPlato">
                                                     <div class="text-end">
@@ -324,7 +324,7 @@ if (isset($_GET['update'])): ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 <?php endif; ?>
-?>
+
 
 
 
@@ -464,6 +464,12 @@ if (isset($_GET['update'])): ?>
     </div>
 </div>
 <?php
+
+require_once __DIR__ . '/../../../Model/domicilio.php';
+$domicilio = new Domicilio();
+$domicilios = $domicilio->listarDomicilio();
+
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

@@ -95,32 +95,34 @@ class PlatoController {
         exit();
     }
 
-    private function procesarImagen(array $file) {
-        $extPermitidas = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+   private function procesarImagen(array $file) {
+    $extPermitidas = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
-        $originalName = basename($file['name']);
-        $ext = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+    $originalName = basename($file['name']);
+    $ext = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
 
-        if (!in_array($ext, $extPermitidas)) {
-            return false;
-        }
-
-        $nuevoNombre = uniqid('plato_') . '.' . $ext;
-        $rutaFisica = $_SERVER['DOCUMENT_ROOT'] . "/PAGINAPHP/View/img" . $nuevoNombre;
-
-        $dir = dirname($rutaFisica);
-        if (!is_dir($dir)) {
-            if (!mkdir($dir, 0755, true)) {
-                return false;
-            }
-        }
-
-        if (!move_uploaded_file($file['tmp_name'], $rutaFisica)) {
-            return false;
-        }
-
-        return "PAGINAPHP/View/img" . $nuevoNombre;
+    if (!in_array($ext, $extPermitidas)) {
+        return false;
     }
+
+    $nuevoNombre = uniqid('plato_') . '.' . $ext;
+
+    $rutaFisica = $_SERVER['DOCUMENT_ROOT'] . "/PaginaPHP/View/img/" . $nuevoNombre;
+
+
+    $dir = dirname($rutaFisica);
+    if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
+    }
+
+    if (!move_uploaded_file($file['tmp_name'], $rutaFisica)) {
+        return false;
+    }
+
+   return "/PaginaPHP/View/img/" . $nuevoNombre;
+
+}
+
 }
 
 

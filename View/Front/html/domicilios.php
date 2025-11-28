@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="../css/styler.css">
 </head>
 <body style="background-color: rgb(37, 35, 35); color: white;">
-<?php
-require_once '../../../Controller/domicilioController.php';
-?>
+
 
 <header style="background-color: #141b3e; padding: 20px 0;">
         <div class="container">
@@ -55,45 +53,47 @@ require_once '../../../Controller/domicilioController.php';
         <h2 class="text-center">Entrega de pedidos</h2>
         <form action="../../../Controller/DomicilioController.php" method="POST">
 
-           
-            <input type="hidden" name="tipo_servicio" value="domicilio">
-            <div class="mb-3">
-                <label class="form-label" style="color: #000000;">Servicio:</label>
-                <input type="text" class="form-control" value="Domicilio" disabled>
-            </div>
+    <input type="hidden" name="accion" value="crearDomicilio">
+    <input type="hidden" name="tipo_servicio" value="domicilio">
 
-            <div class="mb-3">
-                <label for="nombre" class="form-label" style="color: #000000;">Nombre</label>
-                <input type="text" id="nombre" name="nombre" class="form-control" required>
-            </div>
+    <div class="mb-3">
+        <label class="form-label" style="color: #000000;">Servicio:</label>
+        <input type="text" class="form-control" value="Domicilio" disabled>
+    </div>
 
-            <div class="mb-3">
-                <label for="tel" class="form-label" style="color: #000000;">Teléfono</label>
-                <input type="number" id="tel" name="telefono" class="form-control" required>
-            </div>
+    <div class="mb-3">
+        <label for="nombre" class="form-label" style="color: #000000;">Nombre</label>
+        <input type="text" id="nombre" name="nombre" class="form-control" required>
+    </div>
 
-            <div class="mb-3">
-                <label for="direccion" class="form-label" style="color: #000000;">Dirección de Entrega:</label>
-                <textarea id="direccion" name="direccion" class="form-control" rows="3" placeholder="Escribe tu dirección" required></textarea>
-            </div>
+    <div class="mb-3">
+        <label for="tel" class="form-label" style="color: #000000;">Teléfono</label>
+        <input type="number" id="tel" name="telefono" class="form-control" required>
+    </div>
 
-           
-            <input type="hidden" name="metodo_pago" value="efectivo">
-            <div class="mb-3">
-                <label class="form-label" style="color: #000000;">Método de Pago:</label>
-                <input type="text" class="form-control" value="Efectivo" disabled>
-            </div>
+    <div class="mb-3">
+        <label for="direccion" class="form-label" style="color: #000000;">Dirección de Entrega:</label>
+        <textarea id="direccion" name="direccion" class="form-control" rows="3" required></textarea>
+    </div>
 
-            <div class="mb-3">
-                <label for="fecha" class="form-label" style="color: #000000;">Fecha</label>
-                <input type="date" id="fecha" name="fecha" class="form-control" required>
-            </div>
+    <input type="hidden" name="metodo_pago" value="efectivo">
 
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Enviar pedido</button>
-            </div>
+    <div class="mb-3">
+        <label class="form-label" style="color: #000000;">Método de Pago:</label>
+        <input type="text" class="form-control" value="Efectivo" disabled>
+    </div>
 
-        </form>
+    <div class="mb-3">
+        <label for="fecha" class="form-label" style="color: #000000;">Fecha</label>
+        <input type="date" id="fecha" name="fecha" class="form-control" required>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Enviar pedido</button>
+    </div>
+
+</form>
+
     </div>
 </div>
 
